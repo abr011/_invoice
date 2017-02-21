@@ -95,6 +95,17 @@ body, html {
 	font-size: 14px;
 }
 
-[class|="selected"] {
-    background: yellow;
+.checked  {
+	font-weight: 600;
 }
+
+.maturity_date_difference p {
+	
+	margin-bottom: -0px;
+}
+
+
+
+
+
+
