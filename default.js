@@ -39,7 +39,7 @@ function print_dates() {
 	
 	$('#date .date_to_send').html(issue_date.add(maturity_date_difference, 'days').format("l"));
 	
-	 
+	 /// nevim. nejaka poznamka kvuli gitu
 
 }
 	print_dates();
