@@ -120,7 +120,7 @@ $('#variable_symbol_checkbox').change(function () {
     if ($(this).is(':checked')) {
         console.log($(this).val() + ' is now checked');
         
-        var a = "VS" + ("\u00A0") + ("\u00A0") + $('.just_invoice_number').html()
+        var a = "Variabilní symbol" + ("\u00A0") + ("\u00A0") + $('.just_invoice_number').html()
         
         $('#variable_symbol').html(a)
         $('#variable_symbol_wrap').removeClass( 'hidden' );
