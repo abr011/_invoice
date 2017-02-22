@@ -26,9 +26,9 @@ $(document).ready(function() {
 
 
 	var issue_date_difference = 0;
-    var maturity_date_difference = 4;
+    var maturity_date_difference = 14;
 
-
+    
     function print_dates() {
 
         issue_date = moment().add(issue_date_difference, 'days');
@@ -114,5 +114,24 @@ $(document).ready(function() {
         fillClient($(this).data("client_id"));
 
     });
+    
+    
+$('#variable_symbol_checkbox').change(function () {
+    if ($(this).is(':checked')) {
+        console.log($(this).val() + ' is now checked');
+        
+        var a = "VS" + ("\u00A0") + ("\u00A0") + $('.just_invoice_number').html()
+        
+        $('#variable_symbol').html(a)
+        $('#variable_symbol_wrap').removeClass( 'hidden' );
+        $('#variable_symbol_wrap').addClass( 'visible' );
+        
+    } else {
+        console.log($(this).val() + ' is now unchecked');
+        $('#variable_symbol_wrap').removeClass( 'visible' );
+        $('#variable_symbol_wrap').addClass( 'hidden' );
+    }
+});
+
 
 });

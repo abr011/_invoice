@@ -19,7 +19,7 @@
 	<div class="container">
 		
 		<div class="invoice_number">
-			Faktura č. <span contenteditable="true">03</span><span class="sort_of_space">2017</span>
+			Faktura č. <span class="just_invoice_number"><span contenteditable="true">03</span><span class="sort_of_space">2017</span></span>
 		</div>
 		
 		
@@ -93,8 +93,22 @@
 					 <div class="col-md-7">
 						 <div id="account_number">
 							 <p class="sort_of_label">převodem na účet</p>
-							 <div class="my_account_number key">12<span class="sort_of_space">8145</span><span class="sort_of_space">5013</span><span class="sort_of_space">/</span><span class="sort_of_space">0800</span>
-							 </div>
+							 	<p class="my_account_number key">12<span class="sort_of_space">8145</span><span class="sort_of_space">5013</span><span class="sort_of_space">/</span><span class="sort_of_space">0800</span>
+							 	</p>
+							 	<div class="variable_symbol explanation visible">	
+							 			<input id="variable_symbol_checkbox" type="checkbox" name="VS" value="VS"> Zobrazit VS na faktuře
+									</div>
+							<div id="variable_symbol_wrap">
+									
+									<p class="sort_of_label">použijte prosím Variabilní symbol</p>
+							 	
+					 			 	
+									<div id="variable_symbol" class="sort_of_key">	
+							 			VS 12345   
+									</div>
+							 	
+							 	
+							</div>
 						 </div>
 					 </div>
 				 </div>	
@@ -127,7 +141,7 @@
 			   		</div>
 			   		<div class="col-md-4">
 						 <div id="maturity_date">
-							<p class="sort_of_label checked">splatnost</p> 
+							<p class="sort_of_label">splatnost</p> 
 							
 							<div class="maturity_date_difference">
 							</div>
