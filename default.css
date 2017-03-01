@@ -35,6 +35,11 @@ body, html {
 	
 }
 
+#variable_symbol .sort_of_space {
+	
+	margin-left: 0px;
+}
+
 .sort_of_key {
 	font-size: 1.5rem;
 	line-height: 2rem;
@@ -90,11 +95,28 @@ body, html {
 }
 #time  {
 	
-	padding: 80px 0 0px 0;
+	padding: 140px 0 0px 0;
 	overflow: scroll;
 	font-size: 14px;
 }
 
-[class|="selected"] {
-    background: yellow;
+.checked  {
+	font-weight: 600;
 }
+
+.maturity_date_difference p {
+	
+	margin-bottom: 0px;
+}
+
+
+.hidden {
+
+	display: none;
+}
+
+#variable_symbol_wrap .sort_of_label {
+	font-size: 14px;
+	color: orange;
+	padding: 24px 0 0px 0;
+}	
