@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Fakturka od Aleše Broma</title>
+	<title>Faktura od Aleše Broma</title>
 	<link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="./default.css">
 	<link rel="stylesheet" type="text/css" href="./print.css" media="print">
@@ -19,54 +19,54 @@
 	<div class="container">
 		
 		<div class="invoice_number">
-			Faktura č. <span class="just_invoice_number"><span contenteditable="true">03</span><span class="sort_of_space">2017</span></span>
+			Faktura č. <span class="just_invoice_number"><span contenteditable="true">03</span><span class="year sort_of_space" contenteditable="true">2017</span></span>
 		</div>
 		
 		
 		<div class="row">
 			<div class="col-md-8">
-				<div id="client">
-				   <p class="sort_of_label">vážená firma</p>
+					<div id="client">
+					   <p class="sort_of_label">vážená firma</p>
 		  
-				   <div class="name key"> ---
-				   </div>
-	  
-				   <div class="row">
-					   <div class="col-md-5 detail">
-						   <div class="address_street"> ---
-						   </div>
-						   <div class="address_town"> ---
-						   </div>
+					   <div class="name key"> ---
 					   </div>
 	  
-					   <div class="col-md-7 detail">
-						   <div class="legal_id"><span class="sort_of_space"></span><span class="sort_of_space"></span>
+					   <div class="row">
+						   <div class="col-md-5 detail">
+							   <div class="address_street"> ---
+							   </div>
+							   <div class="address_town"> ---
+							   </div>
 						   </div>
-					   </div>
-			  		</div>	
-			   	</div> 
+	  
+						   <div class="col-md-7 detail">
+							   <div class="legal_id"><span class="sort_of_space"></span><span class="sort_of_space"></span>
+							   </div>
+						   </div>
+						</div>	
+					</div> 
 	 
-			   	<div id="me">
-				   <p class="sort_of_label">zaplatí dodavateli</p>
+					<div id="me">
+					   <p class="sort_of_label">zaplatí dodavateli</p>
 	  
-				   <div class="name key">Aleš Brom
-				   </div>
-	  
-				   <div class="row">
-					   <div class="col-md-5 detail">
-						   <div class="address_street">Kroupova 2756
-						   </div>
-						   <div class="address_town">150 00&nbsp;&nbsp;Praha 5 - Smíchov
-						   </div>
+					   <div class="name key">Aleš Brom
 					   </div>
-			  
-					   <div class="col-md-7 detail">
-						   <div class="legal_id">IČ <span class="sort_of_space">7499</span><span class="sort_of_space">1159</span>
-						   <p class="explanation">nejsem plátce DPH</p>
+	  
+					   <div class="row">
+						   <div class="col-md-5 detail">
+							   <div class="address_street">Kroupova 2756
+							   </div>
+							   <div class="address_town">150 00&nbsp;&nbsp;Praha 5 - Smíchov
+							   </div>
 						   </div>
-					   </div>	
-				   </div>
-			   	</div>		
+			  
+						   <div class="col-md-7 detail">
+							   <div class="legal_id">IČ <span class="sort_of_space">7499</span><span class="sort_of_space">1159</span>
+							   <p class="explanation">nejsem plátce DPH</p>
+							   </div>
+						   </div>	
+					   </div>
+					</div>		
 	 
 				<div id="for_what">
 					 <p class="sort_of_label">za práci na</p>
@@ -86,8 +86,11 @@
 							 <p class="sort_of_label">nejpozději do</p>
 							 <div class="date_to_send key"> 
 							 </div>
+							 
 							 <p class="explanation">datum vystavení <span class="date_issued"></span></p>
+							 
 						 </div>
+						 
 					 </div>
 		  
 					 <div class="col-md-7">
@@ -95,24 +98,26 @@
 							 <p class="sort_of_label">převodem na účet</p>
 							 	<p class="my_account_number key">12<span class="sort_of_space">8145</span><span class="sort_of_space">5013</span><span class="sort_of_space">/</span><span class="sort_of_space">0800</span>
 							 	</p>
-							 	<div class="variable_symbol explanation visible">	
-							 			<input id="variable_symbol_checkbox" type="checkbox" name="VS" value="VS"> Přidat Variabilní symbol (číslo faktury)
+							 	<div class="variable_symbol_add explanation">	
+							 			<input id="variable_symbol_checkbox_add" type="checkbox" name="VS" value="VS"> Přidat Variabilní symbol (číslo faktury)
 									</div>
 							<div id="variable_symbol_wrap" class="hidden">
 									
 									<p class="sort_of_label">použijte prosím</p>
 							 	
 					 			 	
-									<div id="variable_symbol" class="sort_of_key">	
+									<div id="variable_symbol_add" class="sort_of_key">	
 							 			VS 12345   
 									</div>
-							 	
+							 		<div class="variable_symbol_remove explanation hidden">	
+							 			<input id="variable_symbol_checkbox_remove" type="checkbox" name="VS" value="VS"> Odebrat Variabilní symbol (číslo faktury)
+									</div>
 							 	
 							</div>
 						 </div>
 					 </div>
 				 </div>	
-		  
+		
 				 <div id="thanks">
 					 <p class="sort_of_label">a za to</p>
 					 <div class="key">Děkuju, Aleš
@@ -143,8 +148,9 @@
 						 <div id="maturity_date">
 							<p class="sort_of_label">splatnost</p> 
 							
-							<div class="maturity_date_difference">
-							</div>
+							<select class="maturity_date_difference">
+			
+							</select>
 						 </div>
 			   		</div>
 			   

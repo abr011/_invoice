@@ -25,10 +25,14 @@ $(document).ready(function() {
     moment.locale('cs');
 
 
-	var issue_date_difference = 0;
-    var maturity_date_difference = 14;
+    var issue_date_difference = 0;
+    var maturity_date_difference = 0;
 
-    
+    $('#variable_symbol_checkbox_add').prop('checked', false);
+
+    $('.year').html(moment().format("YYYY"));
+
+
     function print_dates() {
 
         issue_date = moment().add(issue_date_difference, 'days');
@@ -38,8 +42,11 @@ $(document).ready(function() {
         $('#date .date_to_send').html((maturity_date).format("l"));
 
     }
-    
+
     print_dates();
+
+
+
 
     var issue_date_list = "";
 
@@ -53,49 +60,21 @@ $(document).ready(function() {
 
     $('.time').html(issue_date_list);
 
-    
+
     $('.time p').on("click", function() {
 
-		issue_date_difference = $(this).data("issue_date_id");
+        issue_date_difference = $(this).data("issue_date_id");
+
+        $('.time p').each(function() { // todle pocitam, ze pude lip...
+            $(this).removeClass('checked');
+        });
+
+        $(this).toggleClass('checked');
+
+        print_dates();
+
+		console.log(issue_date_difference, maturity_date_difference);
 		
-		$('.time p').each(function() {   // todle pocitam, ze pude lip...
-		$(this).removeClass( 'checked' );
-});
-        
-        $(this).toggleClass( 'checked' );
-
-        print_dates();
-
-
-    });
-
-    var list_of_maturity_date_difference = "";
-
-    for (m = 0; m < data.maturity.length; m++) {
-
-        list_of_maturity_date_difference = list_of_maturity_date_difference + "<p data-value='" + data.maturity[m].value + "'>" +
-            data.maturity[m].text + "</p>";
-
-    }
-
-    $('.maturity_date_difference').html(list_of_maturity_date_difference); 
-
-    $('.maturity_date_difference p').on("click", function() {
-
-        maturity_date_difference = ($(this).data("value"));
-        
-       
-        $('.maturity_date_difference p').each(function() {   // todle pocitam, ze pude lip...
-		$(this).removeClass( 'checked' );
-});
-        
-        $(this).toggleClass( 'checked' );
-
-        print_dates();
-        
-       
-
-
     });
 
     var list_of_clients = "";
@@ -114,24 +93,73 @@ $(document).ready(function() {
         fillClient($(this).data("client_id"));
 
     });
-    
-    
-$('#variable_symbol_checkbox').change(function () {
-    if ($(this).is(':checked')) {
-        console.log($(this).val() + ' is now checked');
-        
-        var a = "Variabilní symbol" + ("\u00A0") + ("\u00A0") + $('.just_invoice_number').html()
-        
-        $('#variable_symbol').html(a)
-        $('#variable_symbol_wrap').removeClass( 'hidden' );
-        $('#variable_symbol_wrap').addClass( 'visible' );
-        
-    } else {
-        console.log($(this).val() + ' is now unchecked');
-        $('#variable_symbol_wrap').removeClass( 'visible' );
-        $('#variable_symbol_wrap').addClass( 'hidden' );
-    }
-});
 
+
+    $('#variable_symbol_checkbox_add').change(function() {
+        if ($(this).is(':checked')) {
+            console.log($(this).val() + ' is now checked');
+
+            var a = "Variabilní symbol" + ("\u00A0") + ("\u00A0") + $('.just_invoice_number').html()
+
+            $('#variable_symbol_add').html(a)
+
+            $('#variable_symbol_wrap').toggleClass( 'hidden');
+
+            $('.variable_symbol_add').toggleClass( 'hidden');
+
+            $('.variable_symbol_remove').toggleClass( 'hidden');
+
+            $('#variable_symbol_checkbox_remove').prop('checked', false);
+
+        } else {
+            console.log($(this).val() + ' is now unchecked');
+
+        }
+    });
+
+    $('#variable_symbol_checkbox_remove').change(function() {		
+        if ($(this).is(':checked')) {
+           
+            $('#variable_symbol_wrap').toggleClass( 'hidden');
+            
+            $('.variable_symbol_remove').toggleClass( 'hidden');
+            
+            $('.variable_symbol_add').toggleClass( 'hidden');
+            
+            $('#variable_symbol_checkbox_add').prop('checked', false);
+
+        } else {
+            console.log($(this).val() + ' is now unchecked');
+
+        }
+    });
+    
+    
+    var list_of_maturity_date_difference = "";
+
+    for (m = 0; m < data.maturity.length; m++) {
+
+	list_of_maturity_date_difference += '<option value="' + data.maturity[m].value + '">' + data.maturity[m].text + '</option>';
+
+    }
+
+    $('.maturity_date_difference').html(list_of_maturity_date_difference);
+
+    //$('.maturity_date_difference').find('option').click(function () {
+    
+    $('.maturity_date_difference').change(function () {
+     
+     var valueSelected  = $(this).val();
+     var textSelected   = $(this).text();
+          
+
+	 maturity_date_difference = 1 * valueSelected;
+	
+        print_dates();
+
+    
+    
+    
+   });
 
 });

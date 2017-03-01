@@ -109,21 +109,14 @@ body, html {
 	margin-bottom: 0px;
 }
 
-}
 
 .hidden {
 
 	display: none;
 }
 
-.visible {
-
-	visibility: visible;
-}
-
-
 #variable_symbol_wrap .sort_of_label {
 	font-size: 14px;
 	color: orange;
 	padding: 24px 0 0px 0;
-	
+}	
