@@ -5,9 +5,6 @@ body, html {
 	width: 100%;
 }
 
-p:hover {
-  color: lightgreen;
-}
 
 
 .invoice_number {
@@ -83,10 +80,14 @@ p:hover {
 	
 }
 
-.help div.client_wrap:hover {
-	
-	color: lightgreen;
+.help div.client_wrap:hover {					/* hover 	*/
+	color: chocolate;
 }
+
+.help p:hover {									/* hover 	*/
+  	color: chocolate;
+}
+
 
 .help .sort_of_label  {
 	
@@ -123,7 +124,7 @@ label  {
 
 .hidden {
 
-	display: none;
+	visibility: hidden;
 }
 
 #variable_symbol_wrap .sort_of_label {
