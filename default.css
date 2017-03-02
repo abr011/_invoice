@@ -5,6 +5,11 @@ body, html {
 	width: 100%;
 }
 
+p:hover {
+  color: lightgreen;
+}
+
+
 .invoice_number {
 	padding: 32px 0 24px 0;
 	font-size: 24px;
@@ -78,6 +83,11 @@ body, html {
 	
 }
 
+.help div.client_wrap:hover {
+	
+	color: lightgreen;
+}
+
 .help .sort_of_label  {
 	
 	margin: 0px 0 0px 0;
@@ -100,8 +110,9 @@ body, html {
 	font-size: 14px;
 }
 
-.checked  {
-	font-weight: 600;
+label  {
+
+	font-weight: normal;
 }
 
 .maturity_date_difference p {

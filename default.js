@@ -81,8 +81,8 @@ $(document).ready(function() {
 
     for (i = 0; i < data.client.length; i++) {
 
-        list_of_clients = list_of_clients + "<div class='name' data-client_id='" + i + "'>" + data.client[i].name + "</div>" +
-            "<div class='legal_id' data-client_id='" + i + "'>" + data.client[i].legal_id + "</div>";
+        list_of_clients = list_of_clients + "<div class='client_wrap'>" + "<div class='name' data-client_id='" + i + "'>" + data.client[i].name + "</div>" +
+            "<div class='legal_id' data-client_id='" + i + "'>" + data.client[i].legal_id + "</div>" + "</div>";
 
     }
 
