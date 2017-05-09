@@ -67,10 +67,10 @@ body, html {
 
 .variable_symbol, .help  {
 	
-	display: none;
+	visibility: hidden;
 }
 
 .variable_symbol_add {
 	
-	display: none;
+	visibility: hidden;
 }

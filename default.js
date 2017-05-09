@@ -81,8 +81,8 @@ $(document).ready(function() {
 
     for (i = 0; i < data.client.length; i++) {
 
-        list_of_clients = list_of_clients + "<div class='name' data-client_id='" + i + "'>" + data.client[i].name + "</div>" +
-            "<div class='legal_id' data-client_id='" + i + "'>" + data.client[i].legal_id + "</div>";
+        list_of_clients = list_of_clients + "<div class='client_wrap'>" + "<div class='name' data-client_id='" + i + "'>" + data.client[i].name + "</div>" +
+            "<div class='legal_id' data-client_id='" + i + "'>" + data.client[i].legal_id + "</div>" + "</div>";
 
     }
 
@@ -95,46 +95,33 @@ $(document).ready(function() {
     });
 
 
-    $('#variable_symbol_checkbox_add').change(function() {
-        if ($(this).is(':checked')) {
-            console.log($(this).val() + ' is now checked');
-
+    $('.variable_symbol_add').click(function() {
+        
             var a = "Variabilní symbol" + ("\u00A0") + ("\u00A0") + $('.just_invoice_number').html()
 
-            $('#variable_symbol_add').html(a)
+            $('.variable_symbol_value').html(a)
 
-            $('#variable_symbol_wrap').toggleClass( 'hidden');
+			$('.variable_symbol').toggleClass( 'hollow');
+			$('.variable_symbol_value').toggleClass( 'hollow');
+			$('.variable_symbol_remove').toggleClass( 'hollow');
+			$('.variable_symbol_add').toggleClass( 'hollow');
 
-            $('.variable_symbol_add').toggleClass( 'hidden');
-
-            $('.variable_symbol_remove').toggleClass( 'hidden');
-
-            $('#variable_symbol_checkbox_remove').prop('checked', false);
-
-        } else {
-            console.log($(this).val() + ' is now unchecked');
-
-        }
     });
 
-    $('#variable_symbol_checkbox_remove').change(function() {		
-        if ($(this).is(':checked')) {
-           
-            $('#variable_symbol_wrap').toggleClass( 'hidden');
-            
-            $('.variable_symbol_remove').toggleClass( 'hidden');
-            
-            $('.variable_symbol_add').toggleClass( 'hidden');
-            
-            $('#variable_symbol_checkbox_add').prop('checked', false);
+    $('.variable_symbol_remove').on("click", function() {		
+        	
+            $('.variable_symbol').toggleClass( 'hollow');
+            $('.variable_symbol_value').toggleClass( 'hollow');
+            $('.variable_symbol_remove').toggleClass( 'hollow');
+			$('.variable_symbol_add').toggleClass( 'hollow');
 
-        } else {
-            console.log($(this).val() + ' is now unchecked');
-
-        }
+        
+        
     });
     
-    
+
+							
+							
     var list_of_maturity_date_difference = "";
 
     for (m = 0; m < data.maturity.length; m++) {
@@ -145,8 +132,6 @@ $(document).ready(function() {
 
     $('.maturity_date_difference').html(list_of_maturity_date_difference);
 
-    //$('.maturity_date_difference').find('option').click(function () {
-    
     $('.maturity_date_difference').change(function () {
      
      var valueSelected  = $(this).val();

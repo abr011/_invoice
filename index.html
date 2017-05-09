@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Faktura od Aleše Broma</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
 	<link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="./default.css">
 	<link rel="stylesheet" type="text/css" href="./print.css" media="print">
@@ -82,38 +83,49 @@
 	 
 				<div class="row">
 					 <div class="col-md-5">
-						 <div id="date">
+						<div id="date">
 							 <p class="sort_of_label">nejpozději do</p>
 							 <div class="date_to_send key"> 
 							 </div>
 							 
 							 <p class="explanation">datum vystavení <span class="date_issued"></span></p>
 							 
-						 </div>
-						 
+						</div>
+						
+						<p class="sort_of_key hollow">	
+							VS 1234   
+						</p>
+						<p class="sort_of_key hollow">	
+							VS 12345   
+						</p>
+						<p class="sort_of_key hollow">	
+							VS 1234544   
+						</p>
+						
+							
 					 </div>
 		  
 					 <div class="col-md-7">
 						 <div id="account_number">
-							 <p class="sort_of_label">převodem na účet</p>
-							 	<p class="my_account_number key">12<span class="sort_of_space">8145</span><span class="sort_of_space">5013</span><span class="sort_of_space">/</span><span class="sort_of_space">0800</span>
-							 	</p>
-							 	<div class="variable_symbol_add explanation">	
-							 			<input id="variable_symbol_checkbox_add" type="checkbox" name="VS" value="VS"> Přidat Variabilní symbol (číslo faktury)
-									</div>
-							<div id="variable_symbol_wrap" class="hidden">
-									
-									<p class="sort_of_label">použijte prosím</p>
-							 	
-					 			 	
-									<div id="variable_symbol_add" class="sort_of_key">	
-							 			VS 12345   
-									</div>
-							 		<div class="variable_symbol_remove explanation hidden">	
-							 			<input id="variable_symbol_checkbox_remove" type="checkbox" name="VS" value="VS"> Odebrat Variabilní symbol (číslo faktury)
-									</div>
-							 	
-							</div>
+							<p class="sort_of_label">
+							 	převodem na účet
+							</p>
+							<p class="my_account_number key">
+							 	12<span class="sort_of_space">8145</span><span class="sort_of_space">5013</span><span class="sort_of_space">/</span><span class="sort_of_space">0800</span>
+							</p>
+							 
+							<a class="variable_symbol_add explanation">+ přidat Variabilní symbol (číslo faktury)</a>
+							 
+							
+								 
+								 <p class="sort_of_label variable_symbol hollow">
+									 použijte prosím
+								 </p>
+							 	 <p class="variable_symbol_value sort_of_key hollow">	
+									 VS 12345   
+								 </p>
+								 <a class="variable_symbol_remove explanation hollow">- odebrat Variabilní symbol (číslo faktury)</a>
+							
 						 </div>
 					 </div>
 				 </div>	
@@ -131,8 +143,10 @@
 			
 			   <div id="list_of_clients">
 				   <div class="list_of_clients">
+				   	 <div class="client">
 					   <p class="name"></p>
 					   <p class="legal_id"></p>
+					 </div>
 				   </div>			
 			   </div>
 			   

@@ -5,6 +5,8 @@ body, html {
 	width: 100%;
 }
 
+
+
 .invoice_number {
 	padding: 32px 0 24px 0;
 	font-size: 24px;
@@ -78,6 +80,15 @@ body, html {
 	
 }
 
+.help div.client_wrap:hover {					/* hover 	*/
+	color: chocolate;
+}
+
+.help p:hover {									/* hover 	*/
+  	color: chocolate;
+}
+
+
 .help .sort_of_label  {
 	
 	margin: 0px 0 0px 0;
@@ -100,8 +111,9 @@ body, html {
 	font-size: 14px;
 }
 
-.checked  {
-	font-weight: 600;
+label  {
+
+	font-weight: normal;
 }
 
 .maturity_date_difference p {
@@ -109,13 +121,12 @@ body, html {
 	margin-bottom: 0px;
 }
 
+.hollow { 
+	visibility: hidden;
 
-.hidden {
-
-	display: none;
 }
 
-#variable_symbol_wrap .sort_of_label {
+.variable_symbol.sort_of_label {
 	font-size: 14px;
 	color: orange;
 	padding: 24px 0 0px 0;
