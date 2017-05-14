@@ -1,0 +1,665 @@
+body, html, input {
+	background: #fefefe;
+	font: 16px/24px Avenir Next, Open sans, Helvetica, Arial, Sans-Serif; /* font: font-size/line-height  font-family; */
+	height: 100%;
+	width: 100%;
+	position: relative;
+	color: #333;
+}
+
+h2 {
+	font-size: 1.6em;
+	padding:2em 0px 1em 120px;
+}
+
+h4 {
+	font-size: 1.2em;
+	margin:1em 0px 0px 120px;
+}
+
+.container {
+	margin-left: 120px;
+}
+
+/* index */
+
+.message {
+	width: 740px;
+	float: left;
+	padding-right: 40px;
+}
+
+.preview {
+	position: relative;
+	width: 400px;
+	height: 550px;
+	margin-top: 40px;
+	float: left;
+	
+	
+}
+
+.pic {
+	border: solid 5px lightgrey;
+	margin-left: 30px;
+	box-shadow: 4px 4px grey;
+	
+}
+
+.preview h3 {
+	margin: 40px 0px 0px 40px;
+	padding: 8px 20px 2px 20px;
+	font-size: 1.2em;
+	background-color: lightgrey;
+	display: inline-block;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	box-shadow: 4px 4px grey;
+	
+}
+
+
+.hey  {
+	padding: 40px 0px 0px 120px;
+	font-size: 2.2em;
+	line-height: 2.4em;
+}
+
+.hey span {
+	text-decoration: line-through;
+}
+
+
+/* buttons */
+
+.buttons {
+	padding: 80px 0px 0px 120px;
+}
+
+.button {
+    float: left;
+  	color: white;
+  	text-align: center;
+  	width:300px;
+  	height:80px;
+  	background-color: #FF4500;
+	border-radius: 10px;
+	box-shadow: 4px 4px grey;
+
+}
+
+a.button {
+	font-size:1.2em; 
+  	display:block;
+  	color: white;
+	text-align: center;
+  	line-height: 80px;
+  	vertical-align: middle;
+  	text-decoration: none;
+  	font-weight: 400;
+    
+
+}
+
+.buttons .small  {
+	position: relative;
+	float: left;
+	font-size: .875em;
+	width:100px;
+	height:80px;
+	text-align: center;
+	line-height: 80px;
+}
+
+
+
+.form .button {
+	float: left;
+  	color: white;
+  	text-align: center;
+  	width:300px;
+  	height:80px;
+  	background-color: #FF4500;
+	border-radius: 10px;
+	box-shadow: 4px 4px lightgrey;
+
+}
+
+.button.disabled {
+	
+  	background-color: grey;
+	border-radius: 10px;
+	box-shadow: 0px 0px lightgrey;
+	opacity: .5;
+
+}
+
+
+
+.form .button a {
+	font-size:1.1em; 
+  	text-decoration: none;
+  	color: white;
+  	font-weight: 400;
+  	display: block;
+    padding-top: 16px;
+
+}
+
+
+
+.button a span {
+	font-size:.8em; 
+	display: block;
+    padding-top: 0px;	
+
+}
+
+
+
+.form .button p {
+	font-size:1.1em; 
+  	text-decoration: none;
+  	color: white;
+  	font-weight: 400;
+  	display: block;
+    padding-top: 16px;
+    cursor: pointer;
+
+}
+
+.button p span {
+	font-size:.8em; 
+	display: block;
+    padding-top: 0px;	
+
+}
+
+.link a  {
+	position: relative;
+	
+	color: #FF9000;
+	font-weight: 400;
+	width:300px;
+	height:80px;
+	text-decoration: none;
+	line-height: 80px;
+	vertical-align: middle;
+}
+
+
+/* label a input */
+
+
+label {  
+  font-size:1em; 
+  display:block;
+  color: #FF9000;
+  margin: 48px 0 4px 0;
+}
+
+label span {
+	color: #666;
+}
+
+input {
+  font-size:1.125em;
+  padding:0px 8px 0px 0px;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+
+input:focus { 
+	outline:none; 
+	border-bottom:1px solid #FF9000;
+}
+
+#my_account_number .partial_right,  #my_legal_id .partial_right { /*ptotoze kombinace id a class je vic (specifictejsi) nez :focus (pseuditrida) */
+	outline:none; 
+	border-bottom:1px solid #33FF33;
+}
+
+
+/* input width */
+
+input#new_client_legal_id, input#new_my_legal_id,  input#new_client_tax_id {
+	width: 110px;
+	padding-right: 0px;
+}
+
+input#new_my_account_number_prefix {
+	width: 54px;
+	padding-right: 0px;
+}
+
+input#new_my_account_number {
+	width: 106px;
+	padding-right: 0;
+}
+
+input#new_my_bank_code {
+	width: 44px;
+	padding-right: 0;
+}
+
+input#new_client_address_zip, input#new_my_address_zip {
+	width: 60px;
+	padding-right: 0px;
+}
+
+
+/* input chceck */
+
+
+
+.status {
+	
+	float: left;
+	padding: 0px 20px 0 0;
+	height:80px;
+	width: 120px;
+	text-align: right;
+	line-height: 84px;
+}
+
+
+
+.checked {
+}
+
+.unchecked {
+}
+
+.warning {
+	color: #FF3333;
+	
+}
+
+/* pomocny */
+
+.hidden {
+	display: none;
+}
+
+.step1, .step2 { /* ja chci mit jeden div, kterej je relative a v nem dva absolutne */
+	width: 600px;
+	height: 480px;
+	
+}
+
+
+.initial_position {
+	position: relative;
+	top: -499px;
+	
+}
+
+/* status bar */
+
+#status_bar {
+	
+	padding: 1em 40px 1em 40px;
+	margin-left: 80px;
+	min-width: 400px;
+	max-width: 800px;
+	display: inline-block;
+}
+
+.problem {
+	background-color: #EE3333;
+	color: #FFF;
+}
+
+
+/*
+h2 {
+	font-size: 1.6em;
+	padding:2em 0px 1em 10%;
+}
+
+h3 {
+	padding: 10% 0px 0px 10%;
+	font-size: 1.2em;
+}
+
+h4 {
+	padding: 100px 0px 0px 120px;
+	font-size: 1.1em;
+}
+
+strong {
+	font-weight: 600;
+}
+
+.my_info h4 {
+	padding: 8px 0px 12px 0px;
+	font-size: 1.1em;
+}
+
+.my_info p.break {
+	padding: 8px 0px 0px 0px;
+	
+}
+
+.container {
+	padding-left: 10%;
+}
+
+.my_info {
+	float:left;
+	margin: 160px 0px 0px 0px;
+	padding: 12px 0px 20px 20px;
+	width:300px;
+	
+	background-color: #FFD764;
+	font-size: .9em;
+}
+
+.invoice_info {
+	float:left;
+	width:720px;
+}
+
+.hey  {
+	padding: 5% 0px 0px 10%;
+	font-size: 2.4em;
+	line-height: 2.4em;
+}
+
+.hey  span {
+	
+	font-size: 2.4em;
+	
+}
+.buttons {
+	padding: 5% 0px 0px 10%;
+}
+
+.buttons.form {
+	padding: 10% 0px 5% 10%;
+}
+
+
+
+a.button {
+	font-size:1.2em; 
+  	display:block;
+  	color: white;
+  	
+  	width:25%;
+  	height:80px;
+  	background-color: #FF4500;
+
+  	text-align: center;
+  	line-height: 80px;
+  	vertical-align: middle;
+  	text-decoration: none;
+  	float: left;
+  	font-weight: 500;
+    border-radius: 10px;
+
+}
+
+.mini_button {
+	padding: 8px 12px 8px 12px;
+  	background-color: #fefefe;
+  	font-size:0.8em; 
+  	text-decoration: none;	
+  	margin-top: 12px;
+  	display: inline-block;
+  	box-shadow: 2px 2px grey;
+  	border-radius: 2px;
+
+}
+
+
+.form .button {
+	float: left;
+  	color: white;
+  	text-align: center;
+  	width:300px;
+  	height:80px;
+  	background-color: #FF4500;
+	border-radius: 10px;
+	box-shadow: 4px 4px grey;
+
+}
+
+.form .button a {
+	font-size:1.1em; 
+  	text-decoration: none;
+  	color: white;
+  	font-weight: 500;
+  	
+  	font-weight: 500;
+  	display: block;
+    padding-top: 16px;
+
+}
+
+.button a span {
+	font-size:.8em; 
+	display: block;
+    padding-top: 0px;
+  	
+
+}
+
+.buttons .small  {
+	position: relative;
+	float: left;
+	font-size: .875em;
+	width:100px;
+	height:80px;
+	text-align: center;
+	line-height: 80px;
+}
+
+
+
+.link a  {
+	position: relative;
+	
+	color: #FF9000;
+	font-weight: 600;
+	width:300px;
+	height:80px;
+	text-decoration: none;
+	line-height: 80px;
+	vertical-align: middle;
+}
+
+
+
+
+input {
+  font-size:1.125em;
+  padding:0px 8px 0px 0px;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+
+input:focus { 
+	outline:none; 
+	background: #fefeee;
+}
+
+label {  
+  font-size:1em; 
+  display:block;
+  color: #FF9000;
+  margin: 56px 0 12px 0;
+}
+
+label span {
+	color: #666;
+}
+
+.input .additional_info {  
+  font-size:.8em; 
+  padding: 4px 0 0px 0;
+}
+
+.select_another_client {
+	
+	position: relative;
+	float: right;
+	margin-right: 60px;
+	padding-right: 30px;
+	color: #508FBB;
+}
+
+.select_another_client:after { 
+    content: "▼";
+    margin-right: 6px;
+    color: #508FBB;
+}
+
+
+
+.select_client_list {
+	
+	position: relative;
+	float: right;
+	margin: -29px -62px 0px 0px;
+	padding: 20px 20px 20px 20px;
+	width: 350px;
+	max-height: 500px;
+	background-color: #fefeee;
+}
+
+.select_client_list p:nth-child(even){
+	padding: 0px 0px 12px 0px;
+	font-size: 0.8em;
+	
+}
+
+input#new_invoice_number  {
+	width: 24px;
+	padding-right: 0px;
+}
+
+input#new_invoice_number_year  {
+	width: 48px;
+	margin-left: 20px;
+}
+
+.unchecked, .checked , .warning {
+	
+	float: left;
+	padding-top: 0px;
+	height:80px;
+	width: 120px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 68px;
+	
+}
+
+.checked:after {
+	content: "✓";
+}
+
+.unchecked:after {
+	content: "?";
+}
+
+.warning:after {
+	content: "?";
+}
+
+.client, .my_name .input {
+	padding-left: 120px;
+}
+
+
+input#new_client_address_zip, input#new_my_address_zip {
+	width: 60px;
+	padding-right: 0px;
+}
+
+input#new_my_account_number_prefix {
+	width: 54px;
+	padding-right: 0px;
+}
+
+
+
+input#new_client_legal_id, input#new_my_legal_id,  input#new_client_tax_id {
+	width: 110px;
+	padding-right: 0px;
+}
+
+input#new_for_what  {
+	width: 600px;
+}
+
+input#new_amount  {
+	width: 6em;
+}
+
+input#new_date_to_send, input#new_date_issued, input#my_address_town  {
+	width: 8em;
+}
+
+input#new_my_account_number {
+	width: 106px;
+	padding-right: 0;
+}
+
+input#new_my_bank_code {
+	width: 44px;
+	padding-right: 0;
+}
+
+input::-webkit-calendar-picker-indicator{
+    display: none;
+}
+*/
+
+
+/*
+.in {
+  animation-duration: .5s;
+  animation-name: slidein;
+}
+
+.out {
+  animation-duration: .5s;
+  animation-name: slideout;
+}
+
+@keyframes slidein {
+  from {
+    
+    width:0%;
+     
+  }
+
+  to {
+    
+    width:600px;
+    
+  }
+}
+
+@keyframes slideout {
+  from {
+    margin-left: 10%;
+     
+  }
+
+  to {
+    margin-left: -100%;
+    
+  }
+}
+
+#footer {
+	padding-top: 80px;
+}
+
+
+

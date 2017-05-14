@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Faktura od Aleše Broma</title>
+	<link rel="stylesheet" type="text/css" href="../reset.css">
+	
+	<link rel="stylesheet" href="./default.css">
+	<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+	<script src="../jquery/jquery-3.1.1.min.js"></script>
+	<script src="./data_fa.js"></script>
+	<script src="./default.js"></script>
+	<script src="../moment.js"></script>
+	
+</head>
+<body>
+	
+	<div class="container">
+		<h2>Fakturační údaje</h2>
+		
+		<div id="unchecked_invoice">
+		    	?
+	    </div>
+    	<div class="input invoice_number"> 
+	    	<label for="new_invoice_number">Číslo faktury</label>
+	    	<input id="new_invoice_number" type="text" placeholder="">
+		</div>
+	
+	
+		<div id="unchecked_client">
+	    	?
+	    </div>
+	 	<div class="input client">    
+	    	<label for="new_client_name">Název klienta (odběratele)</label>  
+	    	<input id="new_client_name" type="text" placeholder="">
+	    
+			<div id="client_rest_of_info" class="hidden">
+				<div class="input">    
+	    			<label for="new_client_address_street">Ulice a č.p. (sídlo klienta)</label> 
+	    			<input id="new_client_address_street" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_client_address_town">Obec</label>  
+		    		<input id="new_client_address_town" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_client_address_zip">PSČ</label>  
+		    		<input id="new_client_address_zip" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_client_legal_id">IČ klienta</label>  
+		    		<input id="new_client_legal_id" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_client_tax_id">DIČ klienta</label>  
+		    		CZ <input id="new_client_tax_id" type="text" placeholder="">
+				</div>
+			</div>
+		</div>      
+	
+	
+		<div id="unchecked_client">
+		    ?
+		</div>
+		<div class="input my_name">    
+		    <label for="new_my_name">Název Vaší firmy (dodavatele)</label>  
+		    <input id="new_my_name" type="text" placeholder="">
+		    
+			<div id="my_rest_of_info" class="hidden">
+				<div class="input">    
+		    		<label for="new_my_address_street">Ulice a č.p. (Vaše sídlo)</label>  
+		    		<input id="new_my_address_street" type="text" placeholder="">
+				</div>
+				<div class="input my_address_town">    
+		    		<label for="new_my_address_town">Obec</label>  
+		    		<input id="new_my_address_town" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_my_address_zip">PSČ</label>  
+		    		<input id="new_my_address_zip" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_my_legal_id">Vaše IČ</label>  
+		    		<input id="new_my_legal_id" type="text" placeholder="">
+				</div>
+				<!--<div class="input">    
+		    		<label for="new_my_tax_id">DIČ</label>  
+		    		<input id="new_my_tax_id" type="text" placeholder="CZ0000000000">
+				</div> -->
+				<div class="input my_account_number">    
+	    			<label for="new_my_account_number">Číslo vašeho bankovního účtu</label>  
+	    			<input id="new_my_account_number" type="text" placeholder="00000-0000000000"> / 
+	    			<input id="new_my_bank_code" type="text" placeholder="0000">
+				</div>
+			</div>
+		</div>     
+	
+	
+		<div id="unchecked_for_what">
+    		?
+    	</div>
+		<div class="input for_what">    
+	    	<label for="new_for_what">Popis činnosti</label>  
+	    	<input id="new_for_what" type="text" placeholder="např. za práci na projektu, číslo objednávky...">
+			
+		</div>
+		
+	
+		<div id="unchecked_amount">
+    		?
+    	</div>
+		<div class="input amount">    
+	    	<label for="new_amount">Částka k fakturaci</label>  
+	    	<input id="new_amount" type="text"> Kč
+			
+    	</div>
+    
+    
+    	<div id="unchecked_date_issued">
+    		?
+    	</div>
+		<div class="input date_issued">    
+	    	<label for="new_date_issued">Datum vystavení</label>  
+	    	<input id="new_date_issued" type="date">	
+    	</div>	
+	
+
+		<div id="unchecked_date_to_send">
+    		?
+    		</div>
+		<div class="input date_to_send">    
+	    	<label for="new_date_to_send">Datum splatnosti</label>  
+	    	<input id="new_date_to_send" type="date">
+			
+		</div>
+		<div id="unchecked_thanks">
+			?
+		</div>
+	
+		<div class="input thanks">    
+    		<label for="new_thanks">Text poděkování (nepovinné)</label>  
+    		<input id="new_thanks" type="text" placeholder="např. Děkuju, Aleš">
+		
+		</div>
+
+	</div>
+							
+				
+				
+		
+</body>
+</html>

@@ -1,0 +1,21 @@
+body, html {
+	background: white;
+	font: 16px/24px Avenir Next, Open sans, Helvetica, Arial, Sans-Serif; /* font: font-size/line-height  font-family; */
+	height: 100%;
+	width: 100%;
+	color: #333;
+}
+
+.client-list-item {
+	padding: 2px;
+	border: 1px solid silver;
+}
+
+.client-list-item:hover {
+	background: #eee;
+	border: 1px solid black;
+}
+
+.name {
+	font-weight: 600;
+}

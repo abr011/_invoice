@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Invoice</title>
+	<link rel="stylesheet" type="text/css" href="../reset.css">
+	
+	<link rel="stylesheet" href="./default.css">
+	<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https:/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script>
+  
+
+
+
+
+  <script src="../moment.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+
+	
+	
+	
+	
+	<script>var view="invoice"</script>
+
+	
+	
+</head>
+<body>
+	
+	<div class="container">
+
+		<div class="invoice_info">
+			<h2>Fakturační údaje</h2>
+			
+			<div id="invoice_number">
+				<div class="status unchecked">
+		    	</div>
+		    	<div class="input invoice_number"> 
+			    	<label for="new_invoice_number">Číslo faktury</label>
+			    	<input id="new_invoice_number" type="text" placeholder="">
+			    	<input id="new_invoice_number_year" type="text" placeholder="">
+			    	<p class="additional_info">poslední číslo bylo 123456</p>
+				</div>
+			</div>
+			
+
+			<div id="date_issued">
+				<div class="status unchecked">
+		    	</div>
+		    	<div class="input date_issued">
+			    	<label for="new_date_issued">Datum vystavení</label>  
+			    	<input id="new_date_issued" class="a" type="date"> 
+
+			   		<p class="additional_info">dnes</p>
+			    	
+			    </div>
+	    	</div>	
+	
+
+			<div id="date_to_send">
+	    		<div class="status unchecked">
+		    	</div>
+	    		
+				<div class="input date_to_send">    
+			    	<label for="new_date_to_send">Datum splatnosti</label>  
+			    	<input id="new_date_to_send" type="date">
+					<p class="additional_info">za 14 dní</p>
+				</div>
+			</div>
+			
+			
+			<div id="unchecked_client">
+	    		?
+	    	</div>
+			<div class="input client">    
+		    	<label for="new_client">Klient (odběratel)</label>  
+		    	<input id="new_client" type="text" value="1">
+		    	<div class="select_another_client">
+		    	Vybrat jiného klienta
+		    	</div>
+		    	<p class="additional_info">aad</p>
+
+		    	<div class="select_client_list hidden">
+
+		    		<div class="client_list">
+		    		
+		    		</div>
+		    		<div >
+		    			<a class="mini_button" id="add_client" href="client_info.html">Přidat klienta</a>
+			
+		    		</div>
+
+
+		    	</div>
+
+		    	<input id="new_client_key" type="text" value="1" class="hidden">
+			</div>
+
+
+	    	<div id="amount">
+	    		<div class="status unchecked">
+		    	</div>
+				<div class="input amount">    
+			    	<label for="new_amount">Částka k fakturaci</label>  
+			    	<input id="new_amount" type="text"> Kč
+				</div>
+			</div>
+
+			<div id="for_what">
+	    		<div class="status unchecked">
+		    	</div>
+				<div class="input for_what">    
+			    	<label for="new_for_what">Popis činnosti<br><span>např. za práci na projektu, číslo objednávky...</span></label>  
+			    	<input id="new_for_what" type="text" placeholder="">
+					
+				</div>
+			</div>
+	
+			<div id="thanks">
+	    		<div class="status unchecked">
+		    	</div>
+				<div class="input thanks">    
+		    		<label for="new_thanks">Text poděkování (nepovinné)<br><span>např. Děkuju, Aleš</span></label>  
+		    		<input id="new_thanks" type="text" placeholder="">
+				
+				</div>
+			</div>
+
+			<div class="buttons form">
+				<a class="button" id="confirm_invoice" href="invoice_to_print.html">Zobrazit fakturu</a>
+			</div>
+			<div id="footer">
+		
+			</div>	
+			
+		</div>
+		<div class="my_info">
+		<h4>Informace o Vás</h4>
+			<div id="about_me">
+			
+			</div>
+		</div>
+						
+	</div>			
+	<script src="app.js"></script>			
+		
+</body>
+</html>

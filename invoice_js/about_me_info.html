@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Me</title>
+	<link rel="stylesheet" type="text/css" href="../reset.css">
+	
+	<link rel="stylesheet" href="./default.css">
+	<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+
+	<script src="../jquery/jquery-3.1.1.min.js"></script>
+	<script src="./data_fa.js"></script>
+	<script src="./default.js"></script>
+	<script src="../moment.js"></script>
+	<script>var view="about_me"</script>
+</head>
+<body>
+	
+	<div class="container">
+		<h2>Údaje o vaší firmě</h2>
+		
+		<div id="unchecked_my_name">
+		    	?
+	    </div>
+    	
+		<div class="input my_name">    
+		    <label for="new_my_name">Název Vaší firmy </label>  
+		    <input id="new_my_name" type="text" placeholder="">
+		</div>  
+		<div id="unchecked_my_legal_id">
+		    	?
+	    </div>
+		<div class="input">    
+    		<label for="new_my_legal_id">Vaše IČ</label>  
+    		<input id="new_my_legal_id" type="text" placeholder="">
+		</div>
+		<div id="unchecked_my_account_number">
+		    	?
+	    </div>
+		<div class="input my_account_number">    
+			<label for="new_my_account_number">Číslo vašeho bankovního účtu</label>
+			<input id="new_my_account_number_prefix" type="text" placeholder="00000"> &nbsp; &ndash; &nbsp;
+			<input id="new_my_account_number" type="text" placeholder="0000000000"> &nbsp; / &nbsp; 
+			<input id="new_my_bank_code" type="text" placeholder="0000">
+		</div>
+
+		<h4>Sídlo firmy</h4>
+		<div id="unchecked_my_address_street">
+		    	?
+	    </div>	
+		<div class="input">    
+    		<label for="new_my_address_street">Ulice a č.p.</label>  
+    		<input id="new_my_address_street" type="text" placeholder="">
+		</div>
+		<div id="unchecked_my_address_town">
+		    	?
+	    </div>
+		<div class="input my_address_town">    
+    		<label for="new_my_address_town">Obec</label>  
+    		<input id="new_my_address_town" type="text" placeholder="">
+		</div>
+		<div id="unchecked_my_address_zip">
+		    	?
+	    </div>
+		<div class="input">    
+    		<label for="new_my_address_zip">PSČ</label>  
+    		<input id="new_my_address_zip" type="text" placeholder="">
+		</div>
+				
+				<!--<div class="input">    
+		    		<label for="new_my_tax_id">DIČ</label>  
+		    		<input id="new_my_tax_id" type="text" placeholder="CZ0000000000">
+				</div> -->
+				
+		<div id="text"></div>
+		
+		<div class="buttons form">
+			<div class="button">
+			<a id="confirm_about_me" href="client_info.html">Uložit formulář<br><span>a pokračovat údaji o klientovi</span></a>
+			</div>
+			<!--
+			<div class="small">
+			nebo
+			</div>
+			<div class="link">
+				<a href="invoice.html">Uložit formulář a začít s fakturou</a>
+			</div>
+			-->
+		</div>
+		
+
+	</div>
+							
+		<div id="footer"></div>			
+		
+	<script src="app.js"></script>		
+		
+</body>
+</html>

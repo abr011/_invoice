@@ -3,20 +3,20 @@ body, html {
 	font: 16px/24px Avenir Next, Open sans, Helvetica, Arial, Sans-Serif; /* font: font-size/line-height  font-family; */
 	height: 100%;
 	width: 100%;
+	padding-left: 10%;
 }
-
 
 
 .invoice_number {
 	padding: 32px 0 24px 0;
 	font-size: 24px;
-	color: orange;
+	color: grey;
 	
 }
 
 .sort_of_label {
 	font-size: 14px;
-	color: orange;
+	color: grey;
 	padding: 64px 0 0px 0;
 	
 }
@@ -35,11 +35,6 @@ body, html {
 .key .sort_of_space {
 	margin-left: 5px;
 	
-}
-
-#variable_symbol .sort_of_space {
-	
-	margin-left: 0px;
 }
 
 .sort_of_key {
@@ -71,63 +66,23 @@ body, html {
 	padding: 32px 0 60px 0;
 	
 }
-	
 
-.help .name  {
+.variable_symbol, .help  {
 	
-	padding: 8px 0 0px 0;
-	font-weight: 600;
-	
-}
-
-.help div.client_wrap:hover {					/* hover 	*/
-	color: chocolate;
-}
-
-.help p:hover {									/* hover 	*/
-  	color: chocolate;
-}
-
-
-.help .sort_of_label  {
-	
-	margin: 0px 0 0px 0;
-	
-	
-}
-
-
-#list_of_clients  {
-	
-	
-	height: 400px;
-	overflow: scroll;
-	
-}
-#time  {
-	
-	padding: 140px 0 0px 0;
-	overflow: scroll;
-	font-size: 14px;
-}
-
-label  {
-
-	font-weight: normal;
-}
-
-.maturity_date_difference p {
-	
-	margin-bottom: 0px;
-}
-
-.hollow { 
 	visibility: hidden;
-
 }
 
-.variable_symbol.sort_of_label {
-	font-size: 14px;
-	color: orange;
-	padding: 24px 0 0px 0;
-}	
+.variable_symbol_add {
+	
+	visibility: hidden;
+}
+
+#date a {
+	
+	visibility: hidden;
+}
+
+a.pick_client  {
+	
+	visibility: hidden;
+}

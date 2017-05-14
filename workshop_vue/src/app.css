@@ -1,0 +1,123 @@
+body, html, input {
+	background: white;
+	font: 16px/24px Avenir Next, Open sans, Helvetica, Arial, Sans-Serif; /* font: font-size/line-height  font-family; */
+	height: 100%;
+	width: 100%;
+	color: #333;
+}
+
+h2 {
+	font-size: 1.6em;
+	padding:2em 0px 1em 120px;
+}
+
+.container {
+	padding-left: 8em;
+}
+
+input {
+  font-size:1.125em;
+  padding:4px 8px 0px 0px;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+
+input:focus { 
+	outline:none; 
+}
+
+label {  
+  font-size:0.875em; 
+  display:block;
+  color: orange;
+  padding-top: 40px;
+}
+
+input#new_invoice_number  {
+	width: 80px;
+	padding-right: 0px;
+}
+
+
+.client, .my_name .input {
+	padding-left: 120px;
+}
+
+
+input#new_client_address_zip, input#new_my_address_zip {
+	width: 60px;
+	padding-right: 0px;
+}
+
+input#new_client_legal_id, input#new_my_legal_id,  input#new_client_tax_id {
+	width: 110px;
+	padding-right: 0px;
+}
+
+input#new_for_what  {
+	width: 600px;
+}
+
+input#new_amount  {
+	width: 6em;
+}
+
+input#new_date_to_send, input#new_date_issued, input#my_address_town  {
+	width: 8em;
+}
+
+input#new_my_account_number {
+	width: 164px;
+	padding-right: 0;
+}
+
+input#new_my_bank_code {
+	width: 44px;
+	padding-right: 0;
+}
+
+#unchecked_invoice, #unchecked_client , #unchecked_for_what, #unchecked_amount, 
+#unchecked_date_to_send, #unchecked_date_issued, #unchecked_thanks {
+	
+	float: left;
+	padding-top: 32px;
+	height:68px;
+	width: 120px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 68px;
+}
+
+.hidden {
+	max-height: 0;
+	visibility: hidden;
+}
+
+
+
+.in {
+	overflow-y: hidden;
+	max-height: 500px; /* approximate max height */
+	transition-property: all;
+	transition-duration: 2s;
+	transition-timing-function: ease-out;
+}
+
+
+
+
+
+.client-list-item {
+	padding: 2px;
+	border: 1px solid silver;
+}
+
+.client-list-item:hover {
+	background: #eee;
+	border: 1px solid black;
+}
+
+.name {
+	font-weight: 600;
+}

@@ -6,14 +6,16 @@ function fillClient(client_id) {
 
     var name = client.name;
     var street = client.address_street;
-    var town = client.address_zip + ("\u00A0") + ("\u00A0") + client.address_town;
+    var zip = client.address_zip;
+    var town = client.address_town;
     var legal_id = client.legal_id;
 
 
-    $('#client .name').html(name);
+    $('#client .name span').html(name);
     $('#client .address_street').html(street);
+    $('#client .address_zip').html(zip);
     $('#client .address_town').html(town);
-    $('#client .legal_id .sort_of_space').eq(0).html("IČ " + legal_id.slice(0, 4));
+    $('#client .legal_id .sort_of_space').eq(0).html(legal_id.slice(0, 4));
     $('#client .legal_id .sort_of_space').eq(1).html(legal_id.slice(4, 8));
 
 }

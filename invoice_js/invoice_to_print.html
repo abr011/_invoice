@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Faktura od Aleše Broma</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	
+	<link rel="stylesheet" href="print.css">
+	<link rel="stylesheet" type="text/css" href="print.css" media="print">
+	
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+	<script src="../jquery/jquery-3.1.1.min.js"></script>
+	
+	<script src="../moment.js"></script>
+
+
+	<script>var view="preview"</script>
+</head>
+<body>
+	
+<div id="invoice_number">
+	Faktura č. 
+</div>
+		
+<div id="client">
+	<p class="sort_of_label">
+		vážená firma
+	</p>
+	<div class="name key">
+		
+			Technologická agentura ČR 
+		
+		
+	</div>
+	<div class="address">
+		<div class="address_street"> 
+			Evropská 1692/37
+		</div>
+		<div> 
+			<span class="address_zip">
+				160 00 
+			</span> 
+			<span class="address_town">
+				Praha 6 - Dejvice
+			</span>
+		</div>
+	</div>
+	
+	<div class="legal_id">
+		IČ 72050365
+	</div>
+</div>		
+
+<div id="me">
+		
+	<p class="sort_of_label">
+		zaplatí dodavateli	
+	</p>
+	<div class="name key">
+		eš Brom
+	</div>
+	<div class="address">
+		<div class="address_street">
+			oupova 2756
+		</div>
+		<div class="address_town">
+			0 00&nbsp;&nbsp;Pha 5 - Smíchov
+		</div>
+	</div>			
+	<div class="legal_id">
+		<span class="sort_of_space">79</span>
+		<p class="explanation">
+			nejsem plátce DPH
+		</p>
+	</div>					
+</div>
+
+<div id="for_what">
+	 <p class="sort_of_label">
+	 	za práci na
+	 </p>
+	 <div class="sort_of_key for_what">
+	 	Návrh Login a FX flow pro MONETA Money Bank‎
+	 </div>
+</div>	
+
+<div id="amount">
+	 <p class="sort_of_label">
+	 	částku
+	 </p>
+	 <div class="total_amount key">
+	 	
+	 </div>	
+</div>
+	 
+<div id="date">
+	<p class="sort_of_label">
+		nejpozději do
+	</p>
+	
+	<div class="date_to_send key">
+		
+	</div>
+	
+	<p class="explanation">
+		datum vystavení 
+		<span class="date_issued">
+		</span>
+	</p>
+</div>
+					 
+<div id="account_number">
+   	<p class="sort_of_label">
+	   	převodem na účet
+	</p>
+   	<div class="my_account_number key">
+	  
+   	</div>
+	
+</div>							 
+							
+<div id="thanks">
+	<p class="sort_of_label">
+		a za to
+	</p>
+	<div class="thanks">
+		Děkuju, Aleš
+	</div>
+</div>	
+	<script src="app.js"></script>			
+		
+</body>
+</html>
