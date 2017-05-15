@@ -18,9 +18,7 @@
 
     if (view == "my_info") {
 
-        
 
-        //var about_me_id = "";
         var my_name = "";
         var my_legal_id = "";
         var my_account_number_prefix = "";
@@ -29,241 +27,322 @@
         var my_address_street = "";
         var my_address_town = "";
         var my_address_zip = "";
-//
-        var legal_id_length = $( "#new_my_legal_id" ).val().length;
-        var acc_number_prefix_length = $( "#new_my_account_number_prefix" ).val().length;
-        var acc_number_length = $( "#new_my_account_number" ).val().length;
-        var acc_bank_length = $( "#new_my_bank_code" ).val().length;
+        //
+        var legal_id_length = $("#new_my_legal_id").val().length;
+        var acc_number_prefix_length = $("#new_my_account_number_prefix").val().length;
+        var acc_number_length = $("#new_my_account_number").val().length;
+        var acc_bank_length = $("#new_my_bank_code").val().length;
 
-//        
+        var my_name_length = $("#new_my_name").val().length;
+        var my_address_street_length = my_address_street.length;
+
+        //        
         var legal_id_status;
-        var acc_number_prefix_status;
+        //var acc_number_prefix_status;
         var account_number_status;
         var bank_code_status;
+        var account_status;
+        var my_name_status;
+        var my_address_street_status;
+
+        var message_legal = "";
+        var message_acc_number = "";
+        var message_bank_code = "";
+        var message_my_name = "";
+        var message_my_address_street = "";
+
+var statuses = [
+            {
+            name: "legal_id_status",
+            status: ""
+        },
+            {
+            name: "acc_number_prefix_status",
+            status: ""
+        },
+            {
+            name: "account_number_status",
+            status: ""
+        },
+            {
+            name: "bank_code_status",
+            status: "",
+            }
+]
 
         var ok = "&#9989;";
-        var nok = "&#128542;";
-        var nok1 = "&#128531;";
-        var nok2 = "&#128530;";
-        var nok3 = "&#128522;";
+        var nok = "?";
 
-//
+        //
         input_status();
         to_enable_button();
 
-            //console.log(acc_number_prefix_status, bank_code_status);
-//        
-        
-        function to_enable_button() { 
+        //        
 
-            if 
+        $('h2').text("Základní info o Vaší firmě");
 
-            ((legal_id_status == ok) && (acc_number_prefix_status == ok) && (account_number_status == ok) && (bank_code_status == ok)) {
-                
-            $( "#confirm_form .button" ).removeClass( "disabled" );
 
-            }
+        function to_enable_button() {
 
-                else {
+            if
 
-                $( "#confirm_form .button" ).addClass( "disabled" );
+            ((legal_id_status == ok) && (account_number_status == ok) && (bank_code_status == ok)) {
 
-                };
+                $("#confirm_form .button").removeClass("disabled");
+
+            } else {
+
+                $("#confirm_form .button").addClass("disabled");
+
+            };
         };
 
 
 
         function input_status() {
 
-    /*        if (legal_id_length == 10) {
-
-                    legal_id_status = ok;
-
-                }
-
-                else {
-
-                    legal_id_status = nok;
-
-
-                };
-  */
             if (legal_id_length == 10) {
 
-                    legal_id_status = ok;
+                legal_id_status = ok;
 
-                }
-
-                else {
-
-                    legal_id_status = nok;
-
-                    var a = legal_id_length;
-
-                    if ((a > 0) && (a < 4)) {
-                        legal_id_status = nok1;
-                    }
-
-                    if ((a > 3) && (a<7)) {
-                        legal_id_status = nok2;
-                    }
-                    if ((a > 6) && (a<10)) {
-                        legal_id_status = nok3;
-                    }
+                message_legal = "";     
+                $('#my_legal_id .input span').text(message_legal);
+                $('#new_my_legal_id').removeClass("field_is_wrong");
 
 
-                };
-            
-            $('#my_legal_id .status').html(legal_id_status);   
+            } else {
+
+                legal_id_status = nok;
+
+            };
+
+
+            $('#my_legal_id .status').html(legal_id_status);
+
+
+            if ((acc_number_length > 1 && acc_number_length < 11)) {
+
+                account_number_status = ok;
+
+                message_acc_number = "";
+                $('#my_account_number .input span').text(message_acc_number + " " + message_bank_code);
+                $('#new_my_account_number').removeClass("field_is_wrong");
+
+            } else {
+
+                account_number_status = nok;
+
+            };
+
+
+            if (acc_bank_length == 4) {
+
+                bank_code_status = ok;
+
+                message_bank_code = "";
+                $('#my_account_number .input span').text(message_acc_number + " " + message_bank_code);
+                $('#new_my_bank_code').removeClass("field_is_wrong");
+
+            } else {
+
+                bank_code_status = nok;
+            };
+
+            if ((account_number_status == ok) && (bank_code_status == ok)) {
+
+                account_status = ok;
+
+            } else {
+
+                account_status = nok;
+            };
+
+
+            $('#my_account_number .status').html(account_status);
+
+// step2
+            if (my_name_length > 0) {
+
+                my_name_status = ok;
+
+                message_my_name = "";     
+                $('#my_name .input span').text(message_my_name);
+                $('#new_my_name').removeClass("field_is_wrong");
+
+
+            } else {
+
+                my_name_status = nok;
+
+            };
+
+            $('#my_name .status').html(my_name_status);
 
 
 
-            if (acc_number_prefix_length > 0 && acc_number_prefix_length < 7) {
-                    
-                    acc_number_prefix_status = ok;
 
-                }
+            if (my_address_street_length > 0) {
 
-                else {
+                my_address_street_status = ok;
 
-                    acc_number_prefix_status = nok;
-                    
-                };
-
-            if (acc_number_length > 1 && acc_number_length < 11) {
-                    
-                    account_number_status = ok;
-                    acc_number_prefix_status = ok;
-
-                }
-
-                else {
-
-                    account_number_status = nok;
-
-                        if (acc_number_prefix_length < 1) {
-                    
-                            acc_number_prefix_status = nok;
-
-                    }
-                    
-                };
+                message_my_address_street = "";     
+                $('#my_address_street .input span').text(message_my_address_street);
+                $('#new_my_address_street').removeClass("field_is_wrong");
 
 
-            if (acc_bank_length == 4) {   
+            } else {
 
-                    bank_code_status = ok;
+                my_address_street_status = nok;
 
+            };
 
-                }
+            $('#my_address_street .status').html(my_address_street_status);
 
-                else {
-                   
-                    bank_code_status = nok;
-
-                };
-
-          
-            message = "<span>" + acc_number_prefix_status + "</span>" + " - "  + "<span>" + 
-                        account_number_status + "</span>" + " / " + "<span>" + bank_code_status + "</span>"
-
-            $('#my_account_number .status').html(message);
 
             to_enable_button();
+            
 
-          }; 
-
-
-
-
-        $( "#new_my_legal_id" ).keyup(function() {
-                
-                legal_id_length = $('#new_my_legal_id').val().length;
-                
-                my_legal_id = $('#new_my_legal_id').val();
-
-                input_status();
+        };
 
 
 
-            }); 
-       
 
-        $( "#my_account_number" ).keyup(function() {
-                
-                acc_number_prefix_length = $( "#new_my_account_number_prefix" ).val().length;
-                acc_number_length = $( "#new_my_account_number" ).val().length;
-                acc_bank_length = $( "#new_my_bank_code" ).val().length;
+        $("#new_my_legal_id").keyup(function() {
 
-                my_account_number_prefix = $( "#new_my_account_number_prefix" ).val();
-                my_account_number = $( "#new_my_account_number" ).val();
-                my_bank_length = $( "#new_my_bank_code" ).val();
+            legal_id_length = $('#new_my_legal_id').val().length;
 
-                input_status();
+            my_legal_id = $('#new_my_legal_id').val();
+
+            input_status();
 
 
-            }); 
+
+        });
+
+
+        $("#my_account_number").keyup(function() {
+
+            acc_number_prefix_length = $("#new_my_account_number_prefix").val().length; // todel asi nemusim vypisovat, dyz je to skoro stejny jako hodnotas
+            acc_number_length = $("#new_my_account_number").val().length;
+            acc_bank_length = $("#new_my_bank_code").val().length;
+
+            my_account_number_prefix = $("#new_my_account_number_prefix").val();
+            my_account_number = $("#new_my_account_number").val();
+            my_bank_code = $("#new_my_bank_code").val();
+
+            input_status();
+
+
+        });
 
 
         var animationIn = "animated bounceInRight";
         var animationOut = "animated bounceOutLeft";
         var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
 
+        
 
-        $('#confirm_form .button').on("click", function() {   
-
-        // doplnit aby tlacitko rikalo proc na nej nejde kliknout, pridat krok, kterej bude volat rejstrik
-
-            if ($(this).hasClass("disabled")) { 
-
-                console.log(legal_id_status, acc_number_prefix_status, acc_number_prefix_status, bank_code_status); 
+        function what_is_wrong() {
+            // mi rekne, ktery policko je blbe, mozna i co s nim udelat, melo by pak zatrast s polickem a vocervenit ho
+            if (legal_id_status == nok) {
+                messag_legal = "Prosím upravte tak, aby IČ mělo 10 číslic.";
+                $('#new_my_legal_id').addClass("field_is_wrong");
+                //$('#my_legal_id .status').text("Oops");
+                $('#my_legal_id .input span').text(messag_legal);
 
             }
 
-            else { 
+            if (account_number_status == nok) {
+                message_acc_number = "Prosím upravte tak, aby č. ú. mělo alespoň 2 číslice.";
+                $('#new_my_account_number').addClass("field_is_wrong");
+                //$('#my_legal_id .status').text("Oops");
+                
+
+            }
+
+            if (bank_code_status == nok) {
+                messag_bank_code = "Prosím upravte tak, aby kód banky měl 4 číslice.";
+                $('#new_my_bank_code').addClass("field_is_wrong");
+                //$('#my_legal_id .status').text("Oops");
+
+            }
+
+            $('#my_account_number .input span').text(message_acc_number + " " +messag_bank_code);
+// step2
+
+        }
+
+// step1 confirm button
+
+        $('#confirm_form .button').on("click", function() {
+
+
+            if ($(this).hasClass("disabled")) {
+
+                what_is_wrong();
+
+
+            } else {
 
                 var content = "Omlouváme se, nepodařilo se nám dotáhnout data z rejstříku. :-(" + "<br>" + "Vyplňte prosím údaje ručně. "
-                        $('#status_bar').removeClass("hidden");
-                        $('#status_bar').addClass("problem");
-                        $('#status_bar').html(content);
+                $('#status_bar').removeClass("hidden");
+                $('#status_bar').addClass("problem");
+                $('#status_bar').html(content);
 
 
-                $('.step1').addClass(animationOut).one(animationEnd, 
+                $('.step1').addClass(animationOut).one(animationEnd,
                     function() {
 
                         $('.step1').removeClass(animationOut);
                         $('.step1').addClass("hidden");
 
 
-                        
+
+
+                    });
+                
+                $('h2').text("Název a sídlo Vaší firmy");
+
+                $('.step2').removeClass("hidden").one(animationEnd,
+                    function() {
+
+
+
+                        $('.step2').removeClass("initial_position");
+
 
                     });
 
-            $('.step2').removeClass("hidden").one(animationEnd, 
-                function() {
+                $('.step2').addClass(animationIn);
 
-                    $('.step2').removeClass("initial_position");
 
-                });
 
-            $('.step2').addClass(animationIn);
-         
-            
-
-}
+            }
         });
 
+        $("#new_my_name").keyup(function() {
 
-        document.getElementById("new_my_name").onblur = function() {
-            //firebaseRef.child("my_name").set($('#new_my_name').val());
+            my_name_length = $('#new_my_name').val().length;
             my_name = $('#new_my_name').val();
-            console.log(my_name);
-        };
 
-        document.getElementById("new_my_address_street").onblur = function() {
-            //firebaseRef.child("my_address_street").set($('#new_my_address_street').val());
+
+            input_status();
+
+        });
+
+        $("#new_my_address_street").keyup(function() {
+
             my_address_street = $('#new_my_address_street').val();
-        };
+            my_address_street_length = my_address_street.length;
+console.log(my_address_street_length, my_address_street );
+
+            input_status();
+
+        });
+
+        
+
+        
 
         document.getElementById("new_my_address_town").onblur = function() {
             //firebaseRef.child("my_address_town").set($('#new_my_address_town').val());
@@ -298,63 +377,63 @@
 
 
 
-   
-/*
 
-    if (view == "about_client") {
+        /*
 
-        var client_name_id = "";
-        var client_name = "";
-        var client_legal_id = "";
-        var client_tax_id = "";
-        var client_address_street = "";
-        var client_address_town = "";
-        var client_address_zip = "";
+            if (view == "about_client") {
 
-
-        document.getElementById("new_client_name").onblur = function() {
-            client_name = $('#new_client_name').val();
-        };
-
-        document.getElementById("new_client_legal_id").onblur = function() {
-            client_legal_id = $('#new_client_legal_id').val();
-        };
-
-        document.getElementById("new_client_tax_id").onblur = function() {
-            client_tax_id = $('#new_client_tax_id').val();
-        };
-
-        document.getElementById("new_client_address_street").onblur = function() {
-            client_address_street = $('#new_client_address_street').val();
-        };
-
-        document.getElementById("new_client_address_town").onblur = function() {
-            client_address_town = $('#new_client_address_town').val();
-        };
-
-        document.getElementById("new_client_address_zip").onblur = function() {
-            client_address_zip = $('#new_client_address_zip').val();
-        };
-
-        $('#confirm_about_client').on("click", function() {
-
-            var about_client_Ref = firebase.database().ref('about_client');
-            var new_about_client_Ref = about_client_Ref.push();
-            new_about_client_Ref.set({
-
-                'client_name_id': client_name,
-                'client_legal_id': client_legal_id,
-                'client_tax_id': client_tax_id,
-                'client_address_street': client_address_street,
-                'client_address_town': client_address_town,
-                'client_address_zip': client_address_zip,
-
-            });
+                var client_name_id = "";
+                var client_name = "";
+                var client_legal_id = "";
+                var client_tax_id = "";
+                var client_address_street = "";
+                var client_address_town = "";
+                var client_address_zip = "";
 
 
+                document.getElementById("new_client_name").onblur = function() {
+                    client_name = $('#new_client_name').val();
+                };
 
-        });
-*/
+                document.getElementById("new_client_legal_id").onblur = function() {
+                    client_legal_id = $('#new_client_legal_id').val();
+                };
+
+                document.getElementById("new_client_tax_id").onblur = function() {
+                    client_tax_id = $('#new_client_tax_id').val();
+                };
+
+                document.getElementById("new_client_address_street").onblur = function() {
+                    client_address_street = $('#new_client_address_street').val();
+                };
+
+                document.getElementById("new_client_address_town").onblur = function() {
+                    client_address_town = $('#new_client_address_town').val();
+                };
+
+                document.getElementById("new_client_address_zip").onblur = function() {
+                    client_address_zip = $('#new_client_address_zip').val();
+                };
+
+                $('#confirm_about_client').on("click", function() {
+
+                    var about_client_Ref = firebase.database().ref('about_client');
+                    var new_about_client_Ref = about_client_Ref.push();
+                    new_about_client_Ref.set({
+
+                        'client_name_id': client_name,
+                        'client_legal_id': client_legal_id,
+                        'client_tax_id': client_tax_id,
+                        'client_address_street': client_address_street,
+                        'client_address_town': client_address_town,
+                        'client_address_zip': client_address_zip,
+
+                    });
+
+
+
+                });
+        */
 
 
     };
@@ -363,18 +442,18 @@
 
     if (view == "invoice") {
 
-        
+
         date_issued = $('#new_date_issued').val();
         date_to_send = $('#new_date_to_send').val();
         amount = "";
         client_name = $('#new_client').val();
         client_key = $('#new_client_key').val();
         for_what = "";
-        
 
-// tohle je pro prvni prubeh, kdyz jeste neni zadna faktura
 
-        var clientRef = firebase.database().ref("about_client"); 
+        // tohle je pro prvni prubeh, kdyz jeste neni zadna faktura
+
+        var clientRef = firebase.database().ref("about_client");
         clientRef.limitToLast(1).on('child_added', function(snapshot) {
 
             var key = snapshot.key;
@@ -387,269 +466,269 @@
             $('#new_client_key').val(key);
 
 
-// tohle plni data z posledni faktury
+            // tohle plni data z posledni faktury
 
-        var invoiceRef = firebase.database().ref("invoice"); 
-        invoiceRef.limitToLast(1).on('child_added', function(snapshot) {
+            var invoiceRef = firebase.database().ref("invoice");
+            invoiceRef.limitToLast(1).on('child_added', function(snapshot) {
 
-            var key = snapshot.key;
-            var client = snapshot.child("client_key").val();
+                var key = snapshot.key;
+                var client = snapshot.child("client_key").val();
 
-            invoice_number = (1 * (snapshot.child("invoice_number").val()) + 1);
-            invoice_number_year = snapshot.child("invoice_number_year").val();
-            thanks = snapshot.child("thanks").val();
+                invoice_number = (1 * (snapshot.child("invoice_number").val()) + 1);
+                invoice_number_year = snapshot.child("invoice_number_year").val();
+                thanks = snapshot.child("thanks").val();
 
-            document.getElementById("new_invoice_number").value = invoice_number; //doplnit ty debilni podminky
-
-
-            document.getElementById("new_invoice_number_year").value = snapshot.child("invoice_number_year").val();
-
-            last_invoice_number = "Poslední faktura měla číslo " + snapshot.child("invoice_number").val() + 
-                snapshot.child("invoice_number_year").val() 
-
-            $('#invoice_number .additional_info').text(last_invoice_number);
-
-            document.getElementById("new_thanks").value = snapshot.child("thanks").val();
+                document.getElementById("new_invoice_number").value = invoice_number; //doplnit ty debilni podminky
 
 
-            var last_client = firebase.database().ref("about_client");
-            var ref = last_client.child(client);
-//
-            
+                document.getElementById("new_invoice_number_year").value = snapshot.child("invoice_number_year").val();
 
-                        ref.once("value")
-                            .then(function(snapshot) {
+                last_invoice_number = "Poslední faktura měla číslo " + snapshot.child("invoice_number").val() +
+                    snapshot.child("invoice_number_year").val()
 
-                                var key = snapshot.key;
-                                var client = snapshot.child("client_name_id").val();
-                                var rest_of_client = snapshot.child("client_address_street").val() + ", " +
-                                    snapshot.child("client_address_town").val() + ", IČ " + snapshot.child("client_legal_id").val();
+                $('#invoice_number .additional_info').text(last_invoice_number);
+
+                document.getElementById("new_thanks").value = snapshot.child("thanks").val();
 
 
-                                $('#new_client').val(client);
-                                $('.client .additional_info').text(rest_of_client);
-                                $('#new_client_key').val(key);
-});
-                              
+                var last_client = firebase.database().ref("about_client");
+                var ref = last_client.child(client);
+                //
 
-// tohle plni seznam klientu pro dropdown
 
-            var a = firebase.database().ref("about_client");
-            var query = a.orderByKey();
+                ref.once("value")
+                    .then(function(snapshot) {
 
-            
+                        var key = snapshot.key;
+                        var client = snapshot.child("client_name_id").val();
+                        var rest_of_client = snapshot.child("client_address_street").val() + ", " +
+                            snapshot.child("client_address_town").val() + ", IČ " + snapshot.child("client_legal_id").val();
 
-            query.once("value")
-                .then(function(snapshot) {
-                    snapshot.forEach(function(childSnapshot) {
-                        // key will be "ada" the first time and "alan" the second time
-                        var key = childSnapshot.key;
-                        // childData will be the actual contents of the child
-                        var childData = childSnapshot.val();
 
-                        $('.client_list').append(
-                            '<div class="a" data-client_id="' + key + '">' +
-                            '<p>' + childData.client_name_id + '</p>' +
-                            '<p>' + childData.client_address_street + ", " +
-                            childData.client_address_town + ", IČ " + childData.client_legal_id + '</p>' +
-                            '</div>'
-                        );
+                        $('#new_client').val(client);
+                        $('.client .additional_info').text(rest_of_client);
+                        $('#new_client_key').val(key);
                     });
 
-// todle vybira klienta z dropdownu
 
-                    $('.select_another_client').on("click", function() {
+                // tohle plni seznam klientu pro dropdown
 
-                    $('.select_client_list').toggleClass('hidden');
+                var a = firebase.database().ref("about_client");
+                var query = a.orderByKey();
 
+
+
+                query.once("value")
+                    .then(function(snapshot) {
+                        snapshot.forEach(function(childSnapshot) {
+                            // key will be "ada" the first time and "alan" the second time
+                            var key = childSnapshot.key;
+                            // childData will be the actual contents of the child
+                            var childData = childSnapshot.val();
+
+                            $('.client_list').append(
+                                '<div class="a" data-client_id="' + key + '">' +
+                                '<p>' + childData.client_name_id + '</p>' +
+                                '<p>' + childData.client_address_street + ", " +
+                                childData.client_address_town + ", IČ " + childData.client_legal_id + '</p>' +
+                                '</div>'
+                            );
+                        });
+
+                        // todle vybira klienta z dropdownu
+
+                        $('.select_another_client').on("click", function() {
+
+                            $('.select_client_list').toggleClass('hidden');
+
+                        });
+
+                        $('.client_list div').on("click", function() {
+
+                            var key = ($(this).data("client_id"));
+                            var ref = a.child(key);
+
+                            ref.once("value")
+                                .then(function(snapshot) {
+                                    var key = snapshot.key;
+                                    var client = snapshot.child("client_name_id").val();
+                                    var rest_of_client = snapshot.child("client_address_street").val() + ", " +
+                                        snapshot.child("client_address_town").val() + ", IČ " + snapshot.child("client_legal_id").val();
+
+
+                                    $('#new_client').val(client);
+                                    $('.client .additional_info').text(rest_of_client);
+                                    $('#new_client_key').val(key);
+
+                                    $('.select_client_list').toggleClass('hidden');
+                                });
+
+
+
+                        });
                     });
 
-                    $('.client_list div').on("click", function() {
 
-                        var key = ($(this).data("client_id"));
-                        var ref = a.child(key);
+                // todle vyplnuje me jako dodavatele, i kdyz to bere posledniho 
 
-                        ref.once("value")
-                            .then(function(snapshot) {
-                                var key = snapshot.key;
-                                var client = snapshot.child("client_name_id").val();
-                                var rest_of_client = snapshot.child("client_address_street").val() + ", " +
-                                    snapshot.child("client_address_town").val() + ", IČ " + snapshot.child("client_legal_id").val();
+                var query = firebase.database().ref("about_me").orderByKey();
 
-
-                                $('#new_client').val(client);
-                                $('.client .additional_info').text(rest_of_client);
-                                $('#new_client_key').val(key);
-
-                                $('.select_client_list').toggleClass('hidden');
-                            });
+                query.once("value")
+                    .then(function(snapshot) {
+                        snapshot.forEach(function(childSnapshot) {
+                            // key will be "ada" the first time and "alan" the second time
+                            var key = childSnapshot.key;
+                            // childData will be the actual contents of the child
+                            var childData = childSnapshot.val();
 
 
-                    
-                });
-        });
+                            $('#about_me').append(
+                                '<div data-about_me_id="' + key + '">' +
+                                '<p>' + '<strong>' + childData.about_me_id + '</strong>' + '</p>' +
+                                '<p>' + childData.my_address_street + '</p>' +
+                                '<p>' + childData.my_address_town + ", " + childData.my_address_zip + '</p>' +
+                                '<p class="break">' + "IČ " + childData.my_legal_id + '</p>' +
+                                '<p>' + "č.ú. " + childData.my_account_number_prefix + " " + childData.my_account_number +
+                                " / " + childData.my_bank_code + '</p>' +
+
+                                '</div>'
+                            );
+                        });
+                    });
+
+                // todle je vo datumech a jejich predvyplneni
+
+                // aby to fungovalo
+                $.datepicker.setDefaults($.datepicker.regional["cs"]);
+                moment.locale('cs');
+
+                // predvyplneni datumu
+
+                document.getElementById("new_date_issued").value = moment().format('l');
+                document.getElementById("new_date_to_send").value = moment().add(14, 'days').format('l');
 
 
-// todle vyplnuje me jako dodavatele, i kdyz to bere posledniho 
-
-        var query = firebase.database().ref("about_me").orderByKey();
-
-        query.once("value")
-            .then(function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
-                    // key will be "ada" the first time and "alan" the second time
-                    var key = childSnapshot.key;
-                    // childData will be the actual contents of the child
-                    var childData = childSnapshot.val();
+                // naplneni DB z dat, ktery jsou predvyplneny 
 
 
-                    $('#about_me').append(
-                        '<div data-about_me_id="' + key + '">' +
-                        '<p>' + '<strong>' + childData.about_me_id + '</strong>' + '</p>' +
-                        '<p>' + childData.my_address_street + '</p>' +
-                        '<p>' + childData.my_address_town + ", " + childData.my_address_zip + '</p>' +
-                        '<p class="break">' + "IČ " + childData.my_legal_id + '</p>' +
-                        '<p>' + "č.ú. " + childData.my_account_number_prefix + " " + childData.my_account_number +
-                        " / " + childData.my_bank_code + '</p>' +
-
-                        '</div>'
-                    );
-                });
-            });
-
-// todle je vo datumech a jejich predvyplneni
-
-        // aby to fungovalo
-            $.datepicker.setDefaults( $.datepicker.regional[ "cs" ] );
-            moment.locale('cs');
-
-        // predvyplneni datumu
-
-            document.getElementById("new_date_issued").value = moment().format('l');
-            document.getElementById("new_date_to_send").value = moment().add(14, 'days').format('l');
-            
-
-        // naplneni DB z dat, ktery jsou predvyplneny 
 
 
-        
-        
-        console.log(invoice_number, date_issued, date_to_send, client_name, client_key)
+                console.log(invoice_number, date_issued, date_to_send, client_name, client_key)
 
-        
-        document.getElementById("new_invoice_number").onblur = function() {
-            invoice_number = $('#new_invoice_number').val();
 
-            $('#invoice_number .status').removeClass('unchecked');
-            $('#invoice_number .status').addClass('checked');
+                document.getElementById("new_invoice_number").onblur = function() {
+                    invoice_number = $('#new_invoice_number').val();
 
-        };
-
-        document.getElementById("new_invoice_number_year").onblur = function() {
-            invoice_number_year = $('#new_invoice_number_year').val();
-
-            $('#invoice_number .status').removeClass('unchecked');
-            $('#invoice_number .status').addClass('checked');
-
-        };
-
-// issue date
-        
-        $("#new_date_issued").datepicker({
-            onSelect: function() { 
-                var dateObject = $(this).datepicker('getDate'); 
-                document.getElementById("new_date_issued").value = moment(dateObject).format('l');
-                date_issued = $('#new_date_issued').val();
-
-                $('#date_issued .status').removeClass('unchecked');
-                $('#date_issued .status').addClass('checked');
-
-                }
-            });
-
-            document.getElementById("new_date_issued").onblur = function() {
-                date_issued = $('#new_date_issued').val();
-
-                $('#date_issued .status').removeClass('unchecked');
-                $('#date_issued .status').addClass('checked');
+                    $('#invoice_number .status').removeClass('unchecked');
+                    $('#invoice_number .status').addClass('checked');
 
                 };
 
-// date to send
+                document.getElementById("new_invoice_number_year").onblur = function() {
+                    invoice_number_year = $('#new_invoice_number_year').val();
 
-        $("#new_date_to_send").datepicker({
-            onSelect: function() { 
-                var dateObject = $(this).datepicker('getDate'); 
-                document.getElementById("new_date_to_send").value = moment(dateObject).format('l');
-                date_to_send = $('#new_date_to_send').val();
-
-                $('#date_to_send .status').removeClass('unchecked');
-                $('#date_to_send .status').addClass('checked');
-                
-
-                }
-            });
-
-            document.getElementById("new_date_to_send").onblur = function() {
-                date_to_send = $('#new_date_to_send').val();
-                
-                $('#date_to_send .status').removeClass('unchecked');
-                $('#date_to_send .status').addClass('checked');
+                    $('#invoice_number .status').removeClass('unchecked');
+                    $('#invoice_number .status').addClass('checked');
 
                 };
 
-//
+                // issue date
 
-        document.getElementById("new_amount").onblur = function() {
-            amount = $('#new_amount').val();
+                $("#new_date_issued").datepicker({
+                    onSelect: function() {
+                        var dateObject = $(this).datepicker('getDate');
+                        document.getElementById("new_date_issued").value = moment(dateObject).format('l');
+                        date_issued = $('#new_date_issued').val();
 
-            $('#amount .status').removeClass('unchecked');
-            $('#amount .status').addClass('checked');
-        };
+                        $('#date_issued .status').removeClass('unchecked');
+                        $('#date_issued .status').addClass('checked');
 
-        document.getElementById("new_client").onblur = function() {
-            client_name = $('#new_client').val();
-            client_key = $('#new_client_key').val();
-        };
+                    }
+                });
 
-       
-        document.getElementById("new_for_what").onblur = function() {
-            for_what = $('#new_for_what').val();
+                document.getElementById("new_date_issued").onblur = function() {
+                    date_issued = $('#new_date_issued').val();
 
-            $('#for_what .status').removeClass('unchecked');
-            $('#for_what .status').addClass('checked');
-        };
+                    $('#date_issued .status').removeClass('unchecked');
+                    $('#date_issued .status').addClass('checked');
 
-        document.getElementById("new_thanks").onblur = function() {
-            thanks = $('#new_thanks').val();
+                };
 
-            $('#thanks .status').removeClass('unchecked');
-            $('#thanks .status').addClass('checked');
-        };
+                // date to send
 
-        $('#confirm_invoice').on("click", function() {
+                $("#new_date_to_send").datepicker({
+                    onSelect: function() {
+                        var dateObject = $(this).datepicker('getDate');
+                        document.getElementById("new_date_to_send").value = moment(dateObject).format('l');
+                        date_to_send = $('#new_date_to_send').val();
 
-            client_name = $('#new_client').val();
-            client_key = $('#new_client_key').val();
+                        $('#date_to_send .status').removeClass('unchecked');
+                        $('#date_to_send .status').addClass('checked');
 
-            var about_invoice_Ref = firebase.database().ref('invoice');
-            var new_about_invoice_Ref = about_invoice_Ref.push();
-            new_about_invoice_Ref.set({
 
-                'invoice_number': invoice_number,
-                'invoice_number_year': invoice_number_year,
-                'date_issued': date_issued,
-                'date_to_send': date_to_send,
-                'amount': amount,
-                'client_name': client_name,
-                'client_key': client_key,
-                'for_what': for_what,
-                'thanks': thanks,
+                    }
+                });
 
+                document.getElementById("new_date_to_send").onblur = function() {
+                    date_to_send = $('#new_date_to_send').val();
+
+                    $('#date_to_send .status').removeClass('unchecked');
+                    $('#date_to_send .status').addClass('checked');
+
+                };
+
+                //
+
+                document.getElementById("new_amount").onblur = function() {
+                    amount = $('#new_amount').val();
+
+                    $('#amount .status').removeClass('unchecked');
+                    $('#amount .status').addClass('checked');
+                };
+
+                document.getElementById("new_client").onblur = function() {
+                    client_name = $('#new_client').val();
+                    client_key = $('#new_client_key').val();
+                };
+
+
+                document.getElementById("new_for_what").onblur = function() {
+                    for_what = $('#new_for_what').val();
+
+                    $('#for_what .status').removeClass('unchecked');
+                    $('#for_what .status').addClass('checked');
+                };
+
+                document.getElementById("new_thanks").onblur = function() {
+                    thanks = $('#new_thanks').val();
+
+                    $('#thanks .status').removeClass('unchecked');
+                    $('#thanks .status').addClass('checked');
+                };
+
+                $('#confirm_invoice').on("click", function() {
+
+                    client_name = $('#new_client').val();
+                    client_key = $('#new_client_key').val();
+
+                    var about_invoice_Ref = firebase.database().ref('invoice');
+                    var new_about_invoice_Ref = about_invoice_Ref.push();
+                    new_about_invoice_Ref.set({
+
+                        'invoice_number': invoice_number,
+                        'invoice_number_year': invoice_number_year,
+                        'date_issued': date_issued,
+                        'date_to_send': date_to_send,
+                        'amount': amount,
+                        'client_name': client_name,
+                        'client_key': client_key,
+                        'for_what': for_what,
+                        'thanks': thanks,
+
+                    });
+
+                });
             });
-
-        });
- }); 
         });
 
     };
@@ -662,7 +741,7 @@
 
         invoiceRef.limitToLast(1).on('child_added', function(snapshot) {
 
-            
+
             var invoice_number = "Faktura č. " + snapshot.val().invoice_number;
             var for_what = snapshot.val().for_what;
             var amount = snapshot.val().amount + " Kč";
@@ -677,60 +756,60 @@
             clientref.once('value')
                 .then(function(snapshot) {
 
-                var client_name = snapshot.val().client_name_id;
-                var client_address_street = snapshot.val().client_address_street;
-                var client_town = snapshot.val().client_address_town + "  " +
-                snapshot.val().client_address_zip;
+                    var client_name = snapshot.val().client_name_id;
+                    var client_address_street = snapshot.val().client_address_street;
+                    var client_town = snapshot.val().client_address_town + "  " +
+                        snapshot.val().client_address_zip;
 
-                var client_legal_id = "IČ " + snapshot.val().client_legal_id;
-                
-            
-            var myRef = firebase.database().ref("about_me");
-
-            myRef.limitToLast(1).on('child_added', function(snapshot) {
-
-            var my_name = snapshot.val().about_me_id;
-            var my_address_street = snapshot.val().my_address_street
-            var my_town = snapshot.val().my_address_town + "  " +
-                snapshot.val().my_address_zip;
-
-            var my_legal_id = "IČ " + snapshot.val().my_legal_id;
-            
-            
-            var my_account = snapshot.val().my_account_number_prefix + snapshot.val().my_account_number + " / " +
-                snapshot.val().my_bank_code;
-                // ... kdyz je prefix prazdnej, nezobrazovat pomlcku
+                    var client_legal_id = "IČ " + snapshot.val().client_legal_id;
 
 
+                    var myRef = firebase.database().ref("about_me");
 
-            $('#invoice_number').html(invoice_number);
+                    myRef.limitToLast(1).on('child_added', function(snapshot) {
+
+                        var my_name = snapshot.val().about_me_id;
+                        var my_address_street = snapshot.val().my_address_street
+                        var my_town = snapshot.val().my_address_town + "  " +
+                            snapshot.val().my_address_zip;
+
+                        var my_legal_id = "IČ " + snapshot.val().my_legal_id;
 
 
-            $('#me .name').html(my_name);
-            $('#me .address_street').html(my_address_street);
-            $('#me .address_town').html(my_town);
-            $('#me .legal_id span').html(my_legal_id);
+                        var my_account = snapshot.val().my_account_number_prefix + snapshot.val().my_account_number + " / " +
+                            snapshot.val().my_bank_code;
+                        // ... kdyz je prefix prazdnej, nezobrazovat pomlcku
 
-            $('#client .name').html(client_name);
-            $('#client .address_street').html(client_address_street);
-            $('#client .address_town').html(client_town);
-            $('#client .legal_id span').html(client_legal_id);
 
-            $('#for_what .for_what').html(for_what);
-            $('#amount .total_amount').html(amount);
 
-            $('#date .date_to_send').html(date_to_send);
-            $('#date .date_issued').html(date_issued);
+                        $('#invoice_number').html(invoice_number);
 
-            $('#account_number .my_account_number').html(my_account);
 
-            $('#thanks .thanks').html(thanks);
+                        $('#me .name').html(my_name);
+                        $('#me .address_street').html(my_address_street);
+                        $('#me .address_town').html(my_town);
+                        $('#me .legal_id span').html(my_legal_id);
 
-       }); 
+                        $('#client .name').html(client_name);
+                        $('#client .address_street').html(client_address_street);
+                        $('#client .address_town').html(client_town);
+                        $('#client .legal_id span').html(client_legal_id);
 
-              }); 
+                        $('#for_what .for_what').html(for_what);
+                        $('#amount .total_amount').html(amount);
 
-             });
+                        $('#date .date_to_send').html(date_to_send);
+                        $('#date .date_issued').html(date_issued);
+
+                        $('#account_number .my_account_number').html(my_account);
+
+                        $('#thanks .thanks').html(thanks);
+
+                    });
+
+                });
+
+        });
 
 
 

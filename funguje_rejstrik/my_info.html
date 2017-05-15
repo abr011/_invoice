@@ -25,10 +25,10 @@
 <body>
 	
 	<div class="container">
-		<h2 class="">Údaje o vaší firmě</h2>
-		<div id=status_bar class="hidden"></div>	
+		<h2 class="">Údaje o vaší firmě <span></span> </h2>
+		
 		<div class="step1">
-			<h4>Základní info</h4>
+		
 			<div id="my_legal_id"> 
 			    <div class="status"> <!-- vyhodit div a puzivat after a befor u imput field -->
 			    </div>
@@ -39,13 +39,13 @@
 			</div>
 
 			<div id="my_account_number">
-			    <div class="status unchecked">
+			    <div class="status">
 			    </div>
 				<div class="input my_account_number">    
 					<label for="new_my_account_number">Číslo vašeho bankovního účtu</label>
 					<input id="new_my_account_number_prefix" type="text" placeholder=""> &nbsp; &ndash; &nbsp;
 					<input id="new_my_account_number" type="text" placeholder=""> &nbsp; / &nbsp; 
-					<input id="new_my_bank_code" type="text" placeholder="">
+					<input id="new_my_bank_code" type="text" placeholder=""> <span></span>
 				</div>
 			</div>
 
@@ -60,18 +60,18 @@
 		
 
 		<div class="step2 initial_position hidden">
-			<h4>Název a sídlo</h4>
+			
 			<div id="my_name">
-			    <div class="status unchecked">
+			    <div class="status">
 			    </div>
 				<div class="input my_name">    
 		    		<label for="new_my_name">Název firmy </label>  
-		    		<input id="new_my_name" type="text" placeholder="">
+		    		<input id="new_my_name" type="text" placeholder=""><span></span>
 				</div>
 			</div>
 
 			<div id="my_address_street">
-			    <div class="status unchecked">
+			    <div class="status">
 			    </div>
 				<div class="input my_address_street">    
 		    		<label for="new_my_address_street">Ulice a č.p.</label>  
@@ -104,6 +104,7 @@
 			
 			</div>
 		</div>
+
 <!--
 		<div id="unchecked_my_name">
 		    	?
@@ -162,8 +163,8 @@
 		
 
 	</div>
+	<div class="loader hidden"></div>
 							
-		<div id="footer"></div>			
 		
 	<script src="app.js"></script>		
 		

@@ -3,7 +3,6 @@ body, html, input {
 	font: 16px/24px Avenir Next, Open sans, Helvetica, Arial, Sans-Serif; /* font: font-size/line-height  font-family; */
 	height: 100%;
 	width: 100%;
-	position: relative;
 	color: #333;
 }
 
@@ -82,7 +81,7 @@ h4 {
   	text-align: center;
   	width:300px;
   	height:80px;
-  	background-color: #FF4500;
+  	background-color: #FF9000;
 	border-radius: 10px;
 	box-shadow: 4px 4px grey;
 
@@ -194,7 +193,7 @@ a.button {
 label {  
   font-size:1em; 
   display:block;
-  color: #FF9000;
+  color: #1A1EB2;
   margin: 48px 0 4px 0;
 }
 
@@ -212,12 +211,28 @@ input {
 
 input:focus { 
 	outline:none; 
-	border-bottom:1px solid #FF9000;
+	border-bottom:2px solid #1A1EB2;
 }
 
 #my_account_number .partial_right,  #my_legal_id .partial_right { /*ptotoze kombinace id a class je vic (specifictejsi) nez :focus (pseuditrida) */
 	outline:none; 
 	border-bottom:1px solid #33FF33;
+}
+
+.field_is_wrong  { 
+	outline:none; 
+	border-bottom:2px solid #EE0000;
+}
+
+.input span {
+	padding-left: 20px;
+	padding-top: 4px;
+	color: red;
+	display: inline-block;
+	width: 400px;
+	position: absolute;
+	font-size: 0.875em;
+	line-height: 1.4em;
 }
 
 
@@ -256,7 +271,7 @@ input#new_client_address_zip, input#new_my_address_zip {
 .status {
 	
 	float: left;
-	padding: 0px 20px 0 0;
+	padding: 0px 40px 0 0;
 	height:80px;
 	width: 120px;
 	text-align: right;
@@ -283,16 +298,23 @@ input#new_client_address_zip, input#new_my_address_zip {
 }
 
 .step1, .step2 { /* ja chci mit jeden div, kterej je relative a v nem dva absolutne */
-	width: 600px;
-	height: 480px;
-	
+	width: 800px;
+	min-height: 500px;
 }
 
 
 .initial_position {
 	position: relative;
-	top: -499px;
+	top: -548px;
 	
+}
+
+.loader {
+	width:100%;
+	height:100%;
+	background-color: grey;
+	opacity: 0.3;
+	position: absolute;
 }
 
 /* status bar */
