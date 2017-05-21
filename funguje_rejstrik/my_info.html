@@ -34,7 +34,7 @@
 			    </div>
 				<div class="input">    
 		    		<label for="new_my_legal_id">Vaše IČ </label>
-		    		<input id="new_my_legal_id" type="text" placeholder=""> <span></span>
+		    		<input id="new_my_legal_id" type="text" placeholder=""> <span class="error_message"></span>
 				</div>
 			</div>
 
@@ -45,7 +45,7 @@
 					<label for="new_my_account_number">Číslo vašeho bankovního účtu</label>
 					<input id="new_my_account_number_prefix" type="text" placeholder=""> &nbsp; &ndash; &nbsp;
 					<input id="new_my_account_number" type="text" placeholder=""> &nbsp; / &nbsp; 
-					<input id="new_my_bank_code" type="text" placeholder=""> <span></span>
+					<input id="new_my_bank_code" type="text" placeholder=""> <span class="error_message"></span>
 				</div>
 			</div>
 
@@ -97,12 +97,17 @@
 				</div>
 			</div>
 
-			<div class="buttons form">
-				<div class="button">
-					<a id="confirm_about_me" href="">Uložit formulář<br><span>a pokračovat údaji o klientovi</span></a>
+			<div id="confirm_about_me" class="buttons form">
+				<div class="button disabled">
+					<p>Potvrdit údaje<br><span>a pokračovat údaji o klientovi</span>
 				</div>
-			
+
 			</div>
+
+			<a class="hidden ales" href="client_info.html"></a>
+
+			
+
 		</div>
 
 <!--

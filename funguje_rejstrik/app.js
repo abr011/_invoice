@@ -16,25 +16,28 @@
     var firebaseRef = firebase.database().ref();
 
 
+
     if (view == "my_info") {
 
 
-        var my_name = "";
-        var my_legal_id = "";
-        var my_account_number_prefix = "";
-        var my_account_number = "";
-        var my_bank_code = "";
-        var my_address_street = "";
-        var my_address_town = "";
-        var my_address_zip = "";
+        var my_name = $("#new_my_name").val();
+        var my_legal_id = $("#new_my_legal_id").val();
+        var my_account_number_prefix = $("#new_my_account_number_prefix").val();
+        var my_account_number = $("#new_my_account_number").val();
+        var my_bank_code = $("#new_my_bank_code").val();
+        var my_address_street = $("#new_my_address_street").val();
+        var my_address_town = $("#new_my_address_town").val();
+        var my_address_zip = $("#new_my_address_zip").val();
         //
-        var legal_id_length = $("#new_my_legal_id").val().length;
-        var acc_number_prefix_length = $("#new_my_account_number_prefix").val().length;
-        var acc_number_length = $("#new_my_account_number").val().length;
-        var acc_bank_length = $("#new_my_bank_code").val().length;
+        var legal_id_length = my_legal_id.length;
+        var acc_number_prefix_length = my_account_number_prefix.length;
+        var acc_number_length = my_account_number.length;
+        var acc_bank_length = my_bank_code.length;
 
-        var my_name_length = $("#new_my_name").val().length;
+        var my_name_length = my_name.length;
         var my_address_street_length = my_address_street.length;
+        var my_address_town_length = my_address_town.length;
+        var my_address_zip_length = my_address_zip.length;
 
         //        
         var legal_id_status;
@@ -44,31 +47,78 @@
         var account_status;
         var my_name_status;
         var my_address_street_status;
+        var my_address_town_status;
+        var my_address_zip_status;
 
         var message_legal = "";
         var message_acc_number = "";
         var message_bank_code = "";
         var message_my_name = "";
         var message_my_address_street = "";
+        var message_my_address_town = "";
+        var message_my_address_zip = "";
 
-var statuses = [
-            {
-            name: "legal_id_status",
-            status: ""
+        //
+
+        var animationIn = "animated bounceInRight";
+        var animationOut = "animated bounceOutLeft";
+        var animationShake = "animated shake";
+        var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+
+        // validation -- musi se rovnat = 2, vetsi 
+
+
+
+
+var list_of_form_fields = { 
+
+     
+    
+        "my_legal_id": {
+            "status" : "",
+            "message" : "Prosím upravte tak, aby IČ mělo 10 číslic.",
+            "value" : $("#new_my_legal_id").val(),
+            "value_length" : "",
+            "input_key" : "#new_my_legal_id",
+            "validation" : /[0-9]{10}$/
         },
-            {
-            name: "acc_number_prefix_status",
-            status: ""
+
+        "my_account_number_prefix": {
+            "status" : "",
+            "message" : "",
+            "value" : $("#new_my_account_number_prefix").val(),
+            "value_length" : "",
+            "input_key" : "#new_my_account_number_prefix",
+            "validation" : /[0-9]{0,6}$/
         },
-            {
-            name: "account_number_status",
-            status: ""
+
+        "my_account_number": {
+            "status" : "",
+            "message" : "Prosím upravte tak, aby č. ú. mělo alespoň 2 a max 10 číslic.",
+            "value" : $("#new_my_account_number").val(),
+            "value_length" : "",
+            "input_key" : "#new_my_account_number",
+            "validation" : /[0-9]{2,10}$/
         },
-            {
-            name: "bank_code_status",
-            status: "",
-            }
-]
+
+        "my_bank_code": {
+            "status" : "",
+            "message" : "Prosím upravte tak, aby kód banky měl 4 číslice.",
+            "value" : $("#new_my_bank_code").val(),
+            "value_length" : "",
+            "input_key" : "#new_my_bank_code",
+            "validation" : /[0-9]{4}$/
+        }
+   } 
+
+   console.log(list_of_form_fields.my_legal_id.validation);
+
+   var price = '5599121212';
+var priceRegex = list_of_form_fields.my_legal_id.validation;
+
+console.log(priceRegex.test(price));
+console.log(price.match(priceRegex));
+
 
         var ok = "&#9989;";
         var nok = "?";
@@ -84,10 +134,10 @@ var statuses = [
 
         function to_enable_button() {
 
-            if
+            if ((list_of_form_fields.my_legal_id.status == ok) /*&& (list_of_form_fields.my_account_number.status == ok)  */
+                && (list_of_form_fields.my_bank_code.status == ok)) 
 
-            ((legal_id_status == ok) && (account_number_status == ok) && (bank_code_status == ok)) {
-
+            {
                 $("#confirm_form .button").removeClass("disabled");
 
             } else {
@@ -95,72 +145,185 @@ var statuses = [
                 $("#confirm_form .button").addClass("disabled");
 
             };
+
+
+
+// step2
+            if ((my_name_status == ok) && (my_address_street_status == ok) 
+                && (my_address_town_status == ok) && (my_address_zip_status == ok))  {
+
+                $("#confirm_about_me .button").removeClass("disabled");
+
+            } else {
+
+                $("#confirm_about_me .button").addClass("disabled");
+
+            };
+            
         };
 
 
 
-        function input_status() {
+        function input_status(input_name, min_length, max_length, type_of_validation, is_alone) {  
 
-            if (legal_id_length == 10) {
+            if (input_name, min_length, max_length, type_of_validation, is_alone) {
 
-                legal_id_status = ok;
-
-                message_legal = "";     
-                $('#my_legal_id .input span').text(message_legal);
-                $('#new_my_legal_id').removeClass("field_is_wrong");
+                if ((type_of_validation == "must_be_equal") ) {
 
 
-            } else {
+                    if (($(input_name.input_key).val().length) == max_length) {
 
-                legal_id_status = nok;
+                        input_name.status = ok;
+
+                        $(input_name.input_key).siblings(".error_message").text("");
+                        $(input_name.input_key).removeClass("field_is_wrong");
+
+
+                    } else {
+
+                        input_name.status = nok;
+
+                    };
+
+                    to_enable_button();
+                };
+
+                if (type_of_validation == "must_be_greater_then") {
+
+
+                    if (($(input_name).val().length) > max_length) {
+
+                        input_field_status = ok;
+                        
+                        $(input_name).siblings(".error_message").text("");
+
+
+                    } else {
+
+                        input_field_status = nok;
+
+                    };
+                };
+
+                if (type_of_validation == "interval") {
+
+
+                    if ((min_length - 1) > ($(input_name).val().length) < (max_length - 1)) {
+
+                        input_field_status = ok;
+                        
+                        $(input_name).siblings(".error_message").text(""); // ma vymazat jen svoji cast zpravy 
+
+
+                    } else {
+
+                        input_field_status = nok;
+
+                    };
+                };
+
+                $(input_name.input_key).parent().siblings(".status").html(input_name.status);
 
             };
 
-
-            $('#my_legal_id .status').html(legal_id_status);
-
-
-            if ((acc_number_length > 1 && acc_number_length < 11)) {
-
-                account_number_status = ok;
-
-                message_acc_number = "";
-                $('#my_account_number .input span').text(message_acc_number + " " + message_bank_code);
-                $('#new_my_account_number').removeClass("field_is_wrong");
-
-            } else {
-
-                account_number_status = nok;
-
-            };
+}
 
 
-            if (acc_bank_length == 4) {
+// keyup keyup keyup keyup keyup  keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup
 
-                bank_code_status = ok;
+        $("#new_my_legal_id").keyup(function() {
 
-                message_bank_code = "";
-                $('#my_account_number .input span').text(message_acc_number + " " + message_bank_code);
-                $('#new_my_bank_code').removeClass("field_is_wrong");
+            //my_legal_id = $('#new_my_legal_id').val();
 
-            } else {
+            list_of_form_fields.my_legal_id.value = $('#new_my_legal_id').val();
+            
+            var min_length = "";
+            var max_length = 10;
+            var type_of_validation = "must_be_equal";
+            var is_alone = "yes";
 
-                bank_code_status = nok;
-            };
+            var value_to_pass = list_of_form_fields.my_legal_id 
 
-            if ((account_number_status == ok) && (bank_code_status == ok)) {
+            input_status(value_to_pass, min_length, max_length, type_of_validation, is_alone);
 
-                account_status = ok;
+        });
 
-            } else {
+        $("#new_my_account_number_prefix").keyup(function() {
 
-                account_status = nok;
-            };
+            my_account_number_prefix = $("#new_my_account_number_prefix").val();
+
+            var min_length = "";
+            var max_length = 6;
+            var type_of_validation = "must_be_lower_then";  // neumi ok, ale muze nok
+            var is_alone = "yes";
+        });
+
+        $("#new_my_account_number").keyup(function() {
+
+            my_account_number = $("#new_my_account_number").val();
+
+            var min_length = 2;
+            var max_length = 10;
+            var type_of_validation = "interval";
+            var is_alone = "no";
+
+            var value_to_pass = list_of_form_fields.my_account_number 
+
+            input_status(value_to_pass, min_length, max_length, type_of_validation, is_alone);
+
+        });
+
+        $("#new_my_bank_code").keyup(function() {
+
+            my_bank_code = $("#new_my_bank_code").val();
+
+            var min_length = "";
+            var max_length = 4;
+            var type_of_validation = "must_be_equal";
+            var is_alone = "no";
+
+            var value_to_pass = list_of_form_fields.my_bank_code 
+
+            input_status(value_to_pass, min_length, max_length, type_of_validation, is_alone);
+
+        });
 
 
-            $('#my_account_number .status').html(account_status);
 
+
+        
+
+        function what_is_wrong() {
+            // mi rekne, ktery policko je blbe, mozna i co s nim udelat, melo by pak zatrast s polickem a vocervenit ho
+            if (list_of_form_fields.my_legal_id.status == nok) {
+                message_legal = "Prosím upravte tak, aby IČ mělo 10 číslic.";
+                $('#new_my_legal_id').addClass("field_is_wrong");
+                //$('#new_my_legal_id').addClass(animationShake);
+                
+                $('#my_legal_id .error_message').text(list_of_form_fields.my_legal_id.message);
+
+                console.log(list_of_form_fields.my_legal_id.status);
+
+            }
+
+            if (account_number_status == nok) {
+                message_acc_number = "Prosím upravte tak, aby č. ú. mělo alespoň 2 číslice.";
+                $('#new_my_account_number').addClass("field_is_wrong");
+
+            }
+
+            if (list_of_form_fields.my_bank_code.status == nok) {
+                message_bank_code = "Prosím upravte tak, aby kód banky měl 4 číslice.";
+                $('#new_my_bank_code').addClass("field_is_wrong");
+
+            }
+
+            $('#my_account_number .error_message').text(message_acc_number + " " +message_bank_code);
 // step2
+
+        }
+
+        // step2
             if (my_name_length > 0) {
 
                 my_name_status = ok;
@@ -177,8 +340,6 @@ var statuses = [
             };
 
             $('#my_name .status').html(my_name_status);
-
-
 
 
             if (my_address_street_length > 0) {
@@ -198,81 +359,52 @@ var statuses = [
 
             $('#my_address_street .status').html(my_address_street_status);
 
+//
 
+            if (my_address_town_length > 0) {
+
+                my_address_town_status = ok;
+
+                message_my_address_town = "";     
+                $('#my_address_town .input span').text(message_my_address_town);
+                $('#new_my_address_town').removeClass("field_is_wrong");
+
+
+            } else {
+
+                my_address_town_status = nok;
+
+            };
+
+            $('#my_address_town .status').html(my_address_town_status);
+
+//
+            if (my_address_zip_length == 5) {
+
+                my_address_zip_status = ok;
+
+                message_my_address_zip = "";     
+                $('#my_address_zip .input span').text(message_my_address_zip);
+                $('#new_my_address_zip').removeClass("field_is_wrong");
+
+
+            } else {
+
+                my_address_zip_status = nok;
+
+            };
+
+            $('#my_address_zip .status').html(my_address_zip_status);
+//
             to_enable_button();
-            
-
-        };
-
-
-
-
-        $("#new_my_legal_id").keyup(function() {
-
-            legal_id_length = $('#new_my_legal_id').val().length;
-
-            my_legal_id = $('#new_my_legal_id').val();
-
-            input_status();
-
-
-
-        });
-
-
-        $("#my_account_number").keyup(function() {
-
-            acc_number_prefix_length = $("#new_my_account_number_prefix").val().length; // todel asi nemusim vypisovat, dyz je to skoro stejny jako hodnotas
-            acc_number_length = $("#new_my_account_number").val().length;
-            acc_bank_length = $("#new_my_bank_code").val().length;
-
-            my_account_number_prefix = $("#new_my_account_number_prefix").val();
-            my_account_number = $("#new_my_account_number").val();
-            my_bank_code = $("#new_my_bank_code").val();
-
-            input_status();
-
-
-        });
-
-
-        var animationIn = "animated bounceInRight";
-        var animationOut = "animated bounceOutLeft";
-        var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
-
         
 
-        function what_is_wrong() {
-            // mi rekne, ktery policko je blbe, mozna i co s nim udelat, melo by pak zatrast s polickem a vocervenit ho
-            if (legal_id_status == nok) {
-                messag_legal = "Prosím upravte tak, aby IČ mělo 10 číslic.";
-                $('#new_my_legal_id').addClass("field_is_wrong");
-                //$('#my_legal_id .status').text("Oops");
-                $('#my_legal_id .input span').text(messag_legal);
 
-            }
-
-            if (account_number_status == nok) {
-                message_acc_number = "Prosím upravte tak, aby č. ú. mělo alespoň 2 číslice.";
-                $('#new_my_account_number').addClass("field_is_wrong");
-                //$('#my_legal_id .status').text("Oops");
-                
-
-            }
-
-            if (bank_code_status == nok) {
-                messag_bank_code = "Prosím upravte tak, aby kód banky měl 4 číslice.";
-                $('#new_my_bank_code').addClass("field_is_wrong");
-                //$('#my_legal_id .status').text("Oops");
-
-            }
-
-            $('#my_account_number .input span').text(message_acc_number + " " +messag_bank_code);
-// step2
-
-        }
+      };
 
 // step1 confirm button
+
+        
 
         $('#confirm_form .button').on("click", function() {
 
@@ -285,9 +417,10 @@ var statuses = [
             } else {
 
                 var content = "Omlouváme se, nepodařilo se nám dotáhnout data z rejstříku. :-(" + "<br>" + "Vyplňte prosím údaje ručně. "
-                $('#status_bar').removeClass("hidden");
-                $('#status_bar').addClass("problem");
-                $('#status_bar').html(content);
+                $('#status_bar')
+                    .removeClass("hidden")
+                    .addClass("problem")
+                    .html(content);
 
 
                 $('.step1').addClass(animationOut).one(animationEnd,
@@ -320,10 +453,12 @@ var statuses = [
             }
         });
 
-        $("#new_my_name").keyup(function() {
+// keyup step2
 
-            my_name_length = $('#new_my_name').val().length;
+        $("#new_my_name").keyup(function() {
+            
             my_name = $('#new_my_name').val();
+            my_name_length = my_name.length;
 
 
             input_status();
@@ -334,30 +469,33 @@ var statuses = [
 
             my_address_street = $('#new_my_address_street').val();
             my_address_street_length = my_address_street.length;
-console.log(my_address_street_length, my_address_street );
 
             input_status();
 
         });
 
-        
+        $("#new_my_address_town").keyup(function() {
 
-        
-
-        document.getElementById("new_my_address_town").onblur = function() {
-            //firebaseRef.child("my_address_town").set($('#new_my_address_town').val());
             my_address_town = $('#new_my_address_town').val();
-        };
+            my_address_town_length = my_address_town.length;
 
-        document.getElementById("new_my_address_zip").onblur = function() {
-            //firebaseRef.child("my_address_zip").set($('#new_my_address_zip').val());
+            input_status();
+
+        });
+
+        $("#new_my_address_zip").keyup(function() {
+
             my_address_zip = $('#new_my_address_zip').val();
-        };
+            my_address_zip_length = my_address_zip.length;
 
-        console.log(my_name, my_address_street, my_address_town, my_address_zip);
+            input_status();
 
+        });
+        
+// confirm button step2
 
         $('#confirm_about_me').on("click", function() {
+
 
             var about_me_Ref = firebase.database().ref('about_me');
             var new_about_me_Ref = about_me_Ref.push();
@@ -371,7 +509,11 @@ console.log(my_address_street_length, my_address_street );
                 'my_address_town': my_address_town,
                 'my_address_zip': my_address_zip,
             });
+
+            $('.ales').click(); // window location
             console.log(new_about_me_Ref.key);
+
+            
 
         });
 
@@ -436,7 +578,7 @@ console.log(my_address_street_length, my_address_street );
         */
 
 
-    };
+    
 
 
 
