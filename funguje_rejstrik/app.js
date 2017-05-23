@@ -80,7 +80,7 @@ var list_of_form_fields = {
             "value" : $("#new_my_legal_id").val(),
             "value_length" : "",
             "input_key" : "#new_my_legal_id",
-            "validation" : /[0-9]{10}$/
+            "validation" : /^[0-9]{10}$/
         },
 
         "my_account_number_prefix": {
@@ -89,7 +89,7 @@ var list_of_form_fields = {
             "value" : $("#new_my_account_number_prefix").val(),
             "value_length" : "",
             "input_key" : "#new_my_account_number_prefix",
-            "validation" : /[0-9]{0,6}$/
+            "validation" : /^[0-9]{0,6}$/
         },
 
         "my_account_number": {
@@ -98,7 +98,8 @@ var list_of_form_fields = {
             "value" : $("#new_my_account_number").val(),
             "value_length" : "",
             "input_key" : "#new_my_account_number",
-            "validation" : /[0-9]{2,10}$/
+            "validation" : /^[0-9]{2,10}$/,
+            "validate_with" : ["new_my_account_number_prefix", "my_bank_code"]
         },
 
         "my_bank_code": {
@@ -107,34 +108,42 @@ var list_of_form_fields = {
             "value" : $("#new_my_bank_code").val(),
             "value_length" : "",
             "input_key" : "#new_my_bank_code",
-            "validation" : /[0-9]{4}$/
+            "validation" : /^[0-9]{4}$/
         }
    } 
 
-   console.log(list_of_form_fields.my_legal_id.validation);
-
-   var price = '5599121212';
-var priceRegex = list_of_form_fields.my_legal_id.validation;
-
-console.log(priceRegex.test(price));
-console.log(price.match(priceRegex));
 
 
         var ok = "&#9989;";
         var nok = "?";
 
         //
-        input_status();
-        to_enable_button();
+
+        var bank_message = list_of_form_fields.my_account_number.message + " " + list_of_form_fields.my_bank_code.message;
+
+    
+
+        Object.keys(list_of_form_fields).forEach(function(key) {
+  
+            var value = list_of_form_fields[key]; // key === this.arguments[0]
+
+            input_status (value) ;
+
+console.log (value);
+
+
+});
 
         //        
 
         $('h2').text("Základní info o Vaší firmě");
 
 
+  
+
         function to_enable_button() {
 
-            if ((list_of_form_fields.my_legal_id.status == ok) /*&& (list_of_form_fields.my_account_number.status == ok)  */
+            if ((list_of_form_fields.my_legal_id.status == ok) && (list_of_form_fields.my_account_number.status == ok)
                 && (list_of_form_fields.my_bank_code.status == ok)) 
 
             {
@@ -164,63 +173,43 @@ console.log(price.match(priceRegex));
 
 
 
-        function input_status(input_name, min_length, max_length, type_of_validation, is_alone) {  
+        function input_status(input_name) {  
 
-            if (input_name, min_length, max_length, type_of_validation, is_alone) {
-
-                if ((type_of_validation == "must_be_equal") ) {
+            if (input_name) {
 
 
-                    if (($(input_name.input_key).val().length) == max_length) {
+                
+
+                if (((input_name.validation.test(input_name.value)) )) {
 
                         input_name.status = ok;
 
-                        $(input_name.input_key).siblings(".error_message").text("");
+                        $(input_name.input_key).siblings("span").addClass("aaa");
                         $(input_name.input_key).removeClass("field_is_wrong");
 
 
+                /*        if ((input_name.input_key == list_of_form_fields.my_account_number.input_key) && (list_of_form_fields.my_bank_code.status) == nok){
+// beztak na picu, potrebuju, aby se to cekovalo jenom po klinkuti na tlacitko, kze to asi mrdnu do naky jiny finkce nebo ceho?
+                                input_name.status = ok;
+
+                                $(input_name.input_key).siblings(".error_message").text(list_of_form_fields.my_bank_code.message);
+                                $(input_name.input_key).removeClass("field_is_wrong");
+
+                                
+                            } 
+
+
+*/
                     } else {
 
                         input_name.status = nok;
 
+
+
                     };
 
                     to_enable_button();
-                };
-
-                if (type_of_validation == "must_be_greater_then") {
-
-
-                    if (($(input_name).val().length) > max_length) {
-
-                        input_field_status = ok;
-                        
-                        $(input_name).siblings(".error_message").text("");
-
-
-                    } else {
-
-                        input_field_status = nok;
-
-                    };
-                };
-
-                if (type_of_validation == "interval") {
-
-
-                    if ((min_length - 1) > ($(input_name).val().length) < (max_length - 1)) {
-
-                        input_field_status = ok;
-                        
-                        $(input_name).siblings(".error_message").text(""); // ma vymazat jen svoji cast zpravy 
-
-
-                    } else {
-
-                        input_field_status = nok;
-
-                    };
-                };
+                
 
                 $(input_name.input_key).parent().siblings(".status").html(input_name.status);
 
@@ -231,72 +220,113 @@ console.log(price.match(priceRegex));
 
 // keyup keyup keyup keyup keyup  keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup keyup
 
+
+        
+
+    $('input').keyup(function() {
+
+
+        
+
+            // mam id, musim se zeptat k jakymu fieldu to patri...!!!!!!!!!!!!!!!!!!!!!!
+
+
+            //var input_id = "#" + this.id;
+
+            var input_key_to_query = this.id.replace("new_", "");
+
+            //var input_id_to_passvalue = $(this).val();
+
+            //var b = this.id.replace("new_", "");
+
+            
+
+
+list_of_form_fields[input_key_to_query].value = this.value;
+
+console.log(list_of_form_fields[input_key_to_query].value);
+
+
+            list_of_form_fields[input_key_to_query].value_length = list_of_form_fields[input_key_to_query].value.length;
+
+            var value_to_pass = list_of_form_fields[input_key_to_query]; 
+
+console.log(value_to_pass);
+
+
+            input_status(value_to_pass);
+
+
+            //input_status (value) ;
+
+            // my_object = { "my_property" : { "my_deeper_property" : "my_deeper_value" } }
+            // my_object.my_property je to samý jako my_object["my_property"]    
+            // // když jen jdeš do hloubky objektu a víš, jak se jmenujou properties, tak píšeš tečky mezi názvy properties
+            // // kdž skládáš název z proměnných, tak každý název (key) máš uložený jako řetězec v proměnné, a píšeš [proměnná]
+            // var prop = "my_property";
+            // var obj = my_object;
+            // obj[prop] bude fungovat, obj.my_propery taky, ale obj.prop ne.
+
+
+        });
+
+
+
+
+
+/*
+   
         $("#new_my_legal_id").keyup(function() {
 
-            //my_legal_id = $('#new_my_legal_id').val();
 
             list_of_form_fields.my_legal_id.value = $('#new_my_legal_id').val();
-            
-            var min_length = "";
-            var max_length = 10;
-            var type_of_validation = "must_be_equal";
-            var is_alone = "yes";
+            list_of_form_fields.my_legal_id.value_length = list_of_form_fields.my_legal_id.value.length;
 
             var value_to_pass = list_of_form_fields.my_legal_id 
 
-            input_status(value_to_pass, min_length, max_length, type_of_validation, is_alone);
+            input_status(value_to_pass);
 
         });
 
         $("#new_my_account_number_prefix").keyup(function() {
 
-            my_account_number_prefix = $("#new_my_account_number_prefix").val();
+            list_of_form_fields.my_account_number_prefix.value = $("#new_my_account_number_prefix").val();
 
-            var min_length = "";
-            var max_length = 6;
-            var type_of_validation = "must_be_lower_then";  // neumi ok, ale muze nok
-            var is_alone = "yes";
+            var value_to_pass = list_of_form_fields.my_account_number_prefix 
+            
+            input_status(value_to_pass);
+            
         });
 
         $("#new_my_account_number").keyup(function() {
 
-            my_account_number = $("#new_my_account_number").val();
-
-            var min_length = 2;
-            var max_length = 10;
-            var type_of_validation = "interval";
-            var is_alone = "no";
+            list_of_form_fields.my_account_number.value = $("#new_my_account_number").val();
 
             var value_to_pass = list_of_form_fields.my_account_number 
 
-            input_status(value_to_pass, min_length, max_length, type_of_validation, is_alone);
-
+            input_status(value_to_pass);
+            
         });
 
         $("#new_my_bank_code").keyup(function() {
 
-            my_bank_code = $("#new_my_bank_code").val();
-
-            var min_length = "";
-            var max_length = 4;
-            var type_of_validation = "must_be_equal";
-            var is_alone = "no";
+            list_of_form_fields.my_bank_code.value = $("#new_my_bank_code").val();
 
             var value_to_pass = list_of_form_fields.my_bank_code 
 
-            input_status(value_to_pass, min_length, max_length, type_of_validation, is_alone);
+            input_status(value_to_pass);
 
         });
 
 
 
-
+*/
         
 
         function what_is_wrong() {
             // mi rekne, ktery policko je blbe, mozna i co s nim udelat, melo by pak zatrast s polickem a vocervenit ho
             if (list_of_form_fields.my_legal_id.status == nok) {
-                message_legal = "Prosím upravte tak, aby IČ mělo 10 číslic.";
+
                 $('#new_my_legal_id').addClass("field_is_wrong");
                 //$('#new_my_legal_id').addClass(animationShake);
                 
@@ -306,19 +336,21 @@ console.log(price.match(priceRegex));
 
             }
 
-            if (account_number_status == nok) {
-                message_acc_number = "Prosím upravte tak, aby č. ú. mělo alespoň 2 číslice.";
+            if (list_of_form_fields.my_account_number.status == nok) {
+                
                 $('#new_my_account_number').addClass("field_is_wrong");
+
 
             }
 
             if (list_of_form_fields.my_bank_code.status == nok) {
-                message_bank_code = "Prosím upravte tak, aby kód banky měl 4 číslice.";
                 $('#new_my_bank_code').addClass("field_is_wrong");
+
+
 
             }
 
-            $('#my_account_number .error_message').text(message_acc_number + " " +message_bank_code);
+            $('#my_account_number .error_message').text(bank_message);
 // step2
 
         }

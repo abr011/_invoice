@@ -301,6 +301,10 @@ input#new_client_address_zip, input#new_my_address_zip {
 	display: none;
 }
 
+span.hidden {
+	display: none;
+}
+
 .step1, .step2 { /* ja chci mit jeden div, kterej je relative a v nem dva absolutne */
 	width: 800px;
 	min-height: 500px;
