@@ -2,6 +2,15 @@ var data = {
     
 
     "client":[ 
+        
+        {
+        "name" : 			"Název firmy, s.r.o.",
+        "address_street" : 	"Ulice a č.p.",
+        "address_town" :	"Obec",
+        "address_zip" : 	"PSČ",
+        "legal_id" : 		"00000000"
+        },
+        
         {
         "name" : 			"Švejda Goldmann, s.r.o.",
         "address_street" : 	"Kanadská 1633/3",
@@ -49,5 +58,7 @@ var data = {
         },
     ]
 }
+
+
 
 

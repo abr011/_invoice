@@ -1,29 +1,42 @@
 body, html {
 	background: white;
 	font: 16px/24px Avenir Next, Open sans, Helvetica, Arial, Sans-Serif; /* font: font-size/line-height  font-family; */
-	height: 100%;
+	
 	width: 100%;
 	padding-left: 10%;
 }
 
 
-.invoice_number {
-	padding: 32px 0 24px 0;
-	font-size: 24px;
-	color: grey;
+#invoice_number {
+	padding: 16px 0 0px 0px;
+	
 	
 }
 
 .sort_of_label {
 	font-size: 14px;
-	color: grey;
-	padding: 64px 0 0px 0;
+	color: #DDD;
+	padding: 48px 0 0px 0;
+	
+}
+
+#date .sort_of_label {
+	font-size: 14px;
+	color: #DDD;
+	padding: 32px 0 0px 0;
+	
+}
+
+#client .key, #me .key {
+	font-size: 1.8rem;
+	line-height: 2rem;
+	padding: 0px 0 8px 0;
 	
 }
 
 .key {
-	font-size: 2rem;
-	line-height: 2.2rem;
+	font-size: 1.8rem;
+	line-height: 2rem;
 	padding: 0px 0 0px 0;
 	
 }
@@ -63,26 +76,14 @@ body, html {
 }
 
 #thanks {
-	padding: 32px 0 60px 0;
-	
+	padding: 16px 0 0px 0;
+
 }
 
-.variable_symbol, .help  {
-	
-	visibility: hidden;
+.address {
+	width: 300px;
+	float:left;
 }
+	
 
-.variable_symbol_add {
-	
-	visibility: hidden;
-}
 
-#date a {
-	
-	visibility: hidden;
-}
-
-a.pick_client  {
-	
-	visibility: hidden;
-}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Client</title>
+	<link rel="stylesheet" type="text/css" href="../reset.css">
+	
+	<link rel="stylesheet" href="./default.css">
+	<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+	<script src="../jquery/jquery-3.1.1.min.js"></script>
+	<script src="./data_fa.js"></script>
+	<script src="./default.js"></script>
+	<script src="../moment.js"></script>
+	<script>var view="about_client"</script>
+	
+</head>
+<body>
+	
+	<div class="container">
+		<h2>Údaje o klientovi (odběrateli)</h2>
+		
+		<div id="unchecked_client_name">
+	    	?
+	    </div>
+ 	    <div class="input">
+	    	<label for="new_client_name">Název firmy</label>  
+	    	<input id="new_client_name" type="text" placeholder="">
+    	</div>
+    	<div id="unchecked_client_legal_id">
+	    	?
+	    </div>
+		<div class="input">    
+    		<label for="new_client_legal_id">IČ</label>  
+    		<input id="new_client_legal_id" type="text" placeholder="">
+		</div>
+		<div id="unchecked_client_tax_id">
+	    	?
+	    </div>
+		<div class="input">    
+    		<label for="new_client_tax_id">DIČ (nepovinné)</label>  
+    		CZ <input id="new_client_tax_id" type="text" placeholder="">
+		</div>
+
+		<h4>Sídlo firmy klienta</h4>
+
+		<div id="unchecked_client_address_street">
+	    	?
+	    </div>	
+		<div class="input">    
+			<label for="new_client_address_street">Ulice a č.p.</label> 
+			<input id="new_client_address_street" type="text" placeholder="">
+		</div>
+		<div id="unchecked_client_address_town">
+	    	?
+	    </div>
+		<div class="input">    
+    		<label for="new_client_address_town">Obec</label>  
+    		<input id="new_client_address_town" type="text" placeholder="">
+		</div>
+		<div id="unchecked_client_address_zip">
+	    	?
+	    </div>
+		<div class="input">    
+    		<label for="new_client_address_zip">PSČ</label>  
+    		<input id="new_client_address_zip" type="text" placeholder="">
+		</div>
+		
+
+
+		<div class="buttons form">
+			<div class="button">
+			<a id="confirm_about_client" href="invoice.html">Uložit formulář<br><span>a pokračovat na fakturační údaje</span></a>
+			</div>
+			
+		</div>
+		    
+	</div>
+							
+	<div id="footer">
+		
+	</div>			
+	<script src="app.js"></script>			
+		
+</body>
+</html>

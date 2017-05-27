@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>Faktura</title>
+	<script src="src/vue.js"></script>
+	<link rel="stylesheet" href="src/app.css">
+</head>
+<body>
+	<div class="container">
+		<h2>Fakturační údaje</h2>
+		
+		<div id="unchecked_invoice">
+		    	?
+	    </div>
+    	<div class="input invoice_number"> 
+	    	<label for="new_invoice_number">Číslo faktury</label>
+	    	<input id="new_invoice_number" type="text" placeholder="">
+		</div>
+	
+	
+		<div id="unchecked_client">
+	    	?
+	    </div>
+	 	<div class="input client">    
+	    	<label for="new_client_name">Název klienta (odběratele)</label>  
+	    	<input id="new_client_name" type="text" placeholder="">
+	    
+			<div id="client_rest_of_info" class="hidden">
+				<div class="input">    
+	    			<label for="new_client_address_street">Ulice a č.p. (sídlo klienta)</label> 
+	    			<input id="new_client_address_street" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_client_address_town">Obec</label>  
+		    		<input id="new_client_address_town" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_client_address_zip">PSČ</label>  
+		    		<input id="new_client_address_zip" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_client_legal_id">IČ klienta</label>  
+		    		<input id="new_client_legal_id" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_client_tax_id">DIČ klienta</label>  
+		    		CZ <input id="new_client_tax_id" type="text" placeholder="">
+				</div>
+			</div>
+		</div>      
+	
+	
+		<div id="unchecked_client">
+		    ?
+		</div>
+		<div class="input my_name">    
+		    <label for="new_my_name">Název Vaší firmy (dodavatele)</label>  
+		    <input id="new_my_name" type="text" placeholder="">
+		    
+			<div id="my_rest_of_info" class="hidden">
+				<div class="input">    
+		    		<label for="new_my_address_street">Ulice a č.p. (Vaše sídlo)</label>  
+		    		<input id="new_my_address_street" type="text" placeholder="">
+				</div>
+				<div class="input my_address_town">    
+		    		<label for="new_my_address_town">Obec</label>  
+		    		<input id="new_my_address_town" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_my_address_zip">PSČ</label>  
+		    		<input id="new_my_address_zip" type="text" placeholder="">
+				</div>
+				<div class="input">    
+		    		<label for="new_my_legal_id">Vaše IČ</label>  
+		    		<input id="new_my_legal_id" type="text" placeholder="">
+				</div>
+				<!--<div class="input">    
+		    		<label for="new_my_tax_id">DIČ</label>  
+		    		<input id="new_my_tax_id" type="text" placeholder="CZ0000000000">
+				</div> -->
+				<div class="input my_account_number">    
+	    			<label for="new_my_account_number">Číslo vašeho bankovního účtu</label>  
+	    			<input id="new_my_account_number" type="text" placeholder="00000-0000000000"> / 
+	    			<input id="new_my_bank_code" type="text" placeholder="0000">
+				</div>
+			</div>
+		</div>     
+	
+	
+		<div id="unchecked_for_what">
+    		?
+    	</div>
+		<div class="input for_what">    
+	    	<label for="new_for_what">Popis činnosti</label>  
+	    	<input id="new_for_what" type="text" placeholder="např. za práci na projektu, číslo objednávky...">
+			
+		</div>
+		
+	
+		<div id="unchecked_amount">
+    		?
+    	</div>
+		<div class="input amount">    
+	    	<label for="new_amount">Částka k fakturaci</label>  
+	    	<input id="new_amount" type="text"> Kč
+			
+    	</div>
+    
+    
+    	<div id="unchecked_date_issued">
+    		?
+    	</div>
+		<div class="input date_issued">    
+	    	<label for="new_date_issued">Datum vystavení</label>  
+	    	<input id="new_date_issued" type="date">	
+    	</div>	
+	
+
+		<div id="unchecked_date_to_send">
+    		?
+    		</div>
+		<div class="input date_to_send">    
+	    	<label for="new_date_to_send">Datum splatnosti</label>  
+	    	<input id="new_date_to_send" type="date">
+			
+		</div>
+		<div id="unchecked_thanks">
+			?
+		</div>
+	
+		<div class="input thanks">    
+    		<label for="new_thanks">Text poděkování (nepovinné)</label>  
+    		<input id="new_thanks" type="text" placeholder="např. Děkuju, Aleš">
+		
+		</div>
+
+	</div>
+	<div id="app" class="container">
+		<div class="row">
+			<div class="col-md-6 edit">
+				{{ message }}
+				<p v-if="seen">Now you see me</p>
+				<button v-on:click="toggleMessage">
+					<span v-if=seen>Hide Message</span>
+					<span v-else>Show Message</span>
+				</button>
+				<hr>
+				<ol>
+					<li v-for="todo in todos">
+						{{ todo.text}}
+					</li>
+				</ol>
+				<input v-model="newTodo"
+					v-on:keyup.enter="addTodo"
+					v-on:keyup.esc="newTodo = ''"
+				>
+				<button v-on:click="addTodo">Add</button>
+				<hr>
+				<!--<label>
+		            <input type="checkbox" v-model="vat">
+		            platce dph?
+		        </label>
+		        <p v-if=vat>
+		            uuu tady je nekdo platce dph?
+		        </p>
+		        <hr>
+		        -->
+		        <div class="col-md-6">
+		        	<div class="client-list-item"
+		        		v-for="client in clients"
+		        		v-on:click="selectClient(client)">
+			        	<h4>{{ client.name }}</h4>	
+			        	<p>{{ client.address_street }}<br>
+			                {{ client.address_zip }}, 
+			                {{ client.address_town }}
+			                
+			            </p>
+			            <p>{{ client.legal_id }}
+			                
+			            </p>
+			            <div id="uncheckedInvoice">
+					    	?
+					    </div>
+					</div>
+		        </div>
+			</div>
+			<div class="col-md-6 view">
+			Faktura pro : <p><span class="name" v-if invoiceClient>{{ invoiceClient.name }}</span><br><span v-if invoiceClient>{{ invoiceClient.legal_id }}</span></p>
+			</div>
+			<div class="client-list-item">
+                <div>
+                    <label for="newClientLegalId">ic</label>
+                    <input id="newClientLegalId" v-model.lazy=newClientLegalId
+					
+                    >
+                </div>
+
+                <div>
+                    <label for="newClientName">name</label>
+                    <input id="newClientName" v-model.lazy=newClientName
+					
+                    >
+                </div>
+                
+                <!--<div>
+                    <label for="newClientAddressStreet">street</label>
+                    <input id="newClientAddressStreet" v-model.lazy=newClientAddressStreet>
+                </div>
+                <div>
+                    <label for="newClientAddressTown">town</label>
+                    <input id="newClientAddressTown" v-model.lazy=newClientAddressTown>
+                </div>
+                <div>
+                    <label for="newClientAddressZip">zip</label>
+                    <input id="newClientAddressZip" v-model.lazy=newClientAddressZip>
+                </div>
+                <div>
+                    <button class="button" v-on:click="addNewClient">Add</button>
+                </div>  -->
+            </div>
+			<button v-on:click="addNewClient">
+					+ Add client
+				</button>
+		</div>
+	</div>
+	<script src="src/app.js"></script>
+</body>
+</html>
